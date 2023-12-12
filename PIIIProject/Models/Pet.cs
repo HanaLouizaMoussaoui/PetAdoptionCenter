@@ -56,6 +56,7 @@ namespace PIIIProject.Models
             }
         }
         #endregion
+        #region Methods
         public void AdoptPet()
         {
             if (!IsAdopted)
@@ -64,5 +65,12 @@ namespace PIIIProject.Models
             }
             
         }
+        protected string RandomTraitPicker(string[] traits)
+        {
+            Random randomizer = new Random();
+            int randomIndex = randomizer.Next(0, traits.Length - 1);
+            return traits[randomIndex];
+        }
+        #endregion
     }
 }
