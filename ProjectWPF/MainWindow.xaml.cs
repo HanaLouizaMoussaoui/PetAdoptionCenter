@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectWPF.Pets;
 using ProjectWPF.Repos;
+using ProjectWPF.Views;
 
 namespace ProjectWPF
 {
@@ -23,6 +24,7 @@ namespace ProjectWPF
     public partial class MainWindow : Window
     {
         private const int MAX_PETS = 7;
+        private int[] alreadyGeneratedPets = new int[4];
         public MainWindow()
         {
             InitializeComponent();
@@ -43,13 +45,33 @@ namespace ProjectWPF
         }
         private void Pet_Selected(object sender, RoutedEventArgs e)
         {
-
+            int petIndex = 0;
+            if (sender is Image clickedImage)
+            {
+                switch (clickedImage.Name)
+                {
+                    case "pet1photo":
+                        petIndex = alreadyGeneratedPets[0];
+                        break;
+                    case "pet2photo":
+                        petIndex = alreadyGeneratedPets[1];
+                        break;
+                    case "pet3photo":
+                        petIndex = alreadyGeneratedPets[2];
+                        break;
+                    case "pet4photo":
+                        petIndex = alreadyGeneratedPets[3];
+                        break;
+                }
+                PetDetails petDetails = new PetDetails(petIndex);
+                petDetails.Show();
+                this.Close();
+            }
         }
         private Pet[] Random_Pets_Generator()
         {
             Pet[] pets = new Pet[4];
             Random randomPetSelector = new Random();
-            int[] alreadyGeneratedPets= new int[4];
             for (int i = 0; i < pets.Length; i++)
             {
                 int randomPet = randomPetSelector.Next(0, MAX_PETS);

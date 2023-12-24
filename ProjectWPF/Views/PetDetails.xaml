@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectWPF.Views"
         mc:Ignorable="d"
-        Title="PetDetails" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="PetDetails" Height="500" Width="800">
+    <StackPanel Margin="10" >
+       
+        <TextBlock Text="Pet Adoption Center" 
+                   FontSize="25" 
+                   HorizontalAlignment="Center"/>
+        <TextBox Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Grid.RowSpan="5" Grid.Column="0" Margin="15" x:Name="selectedPetPhoto" />
+            <TextBlock Grid.Row="0" Grid.Column="1"  Margin="15" x:Name="selectedPetName"/>
+            <TextBlock Grid.Row="1" Grid.Column="1"  Margin="15" x:Name="selectedPetType"/>
+            <TextBlock Grid.Row="2" Grid.Column="1"  Margin="15" x:Name="selectedPetAge"/>
+            <TextBlock Grid.Row="3" Grid.Column="1"  Margin="15" x:Name="selectedPetDescription"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="Go Back"  Margin="15" Width="100px" FontSize="20" x:Name="goBack" Click="Button_Click_GoBack"/>
+
+
+        </Grid>
+
+    </StackPanel>
 </Window>

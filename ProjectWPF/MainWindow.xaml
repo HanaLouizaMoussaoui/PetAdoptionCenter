@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectWPF"
         mc:Ignorable="d"
-        Title= "Pet Adoption Center" Height="600" Width="400">
+        Title= "Pet Adoption Center" Height="550" Width="400">
     <StackPanel Margin="10" >
         <TextBlock Text="Pet Adoption Center" 
                    FontSize="25" 
@@ -33,8 +33,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="0" x:Name="pet1Name" HorizontalAlignment="Center"/>
-            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="1" x:Name="pet2Name" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" x:Name="pet1Name" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="pet2Name" HorizontalAlignment="Center"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -45,7 +45,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Grid.Column="0" Margin="15"  x:Name="pet3photo" MouseDown="Pet_Selected"/>
-            <Image Grid.Row="0" Grid.Column="1" Margin="15"   Name="pet4photo" MouseDown="Pet_Selected" />
+            <Image Grid.Row="0" Grid.Column="1" Margin="15"  x:Name="pet4photo" MouseDown="Pet_Selected" />
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -55,8 +55,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="0" x:Name="pet3Name" HorizontalAlignment="Center" />
-            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="1" x:Name="pet4Name" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" x:Name="pet3Name" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="pet4Name" HorizontalAlignment="Center"/>
         </Grid>
 
     </StackPanel>
