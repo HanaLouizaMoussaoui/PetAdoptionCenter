@@ -5,8 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title= "Pet Adoption Center" Height="600" Width="400">
+    <StackPanel Margin="10" >
+        <TextBlock Text="Pet Adoption Center" 
+                   FontSize="25" 
+                   HorizontalAlignment="Center"/>
+        <TextBox Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
 
-    </Grid>
+        <Button Content="Click to see available pets!" Margin="0,20,0,0" Click="Button_Click_Show_Pets" x:Name="seePetsButton"
+                Width="200"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" Margin="15" x:Name="pet1photo" MouseDown="Pet_Selected"/>
+            <Image Grid.Row="0" Grid.Column="1"  Margin="15" x:Name="pet2photo" MouseDown="Pet_Selected"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="0" x:Name="pet1Name" HorizontalAlignment="Center"/>
+            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="1" x:Name="pet2Name" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" Margin="15"  x:Name="pet3photo" MouseDown="Pet_Selected"/>
+            <Image Grid.Row="0" Grid.Column="1" Margin="15"   Name="pet4photo" MouseDown="Pet_Selected" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="0" x:Name="pet3Name" HorizontalAlignment="Center" />
+            <TextBlock Text="kitty" Grid.Row="0" Grid.Column="1" x:Name="pet4Name" HorizontalAlignment="Center"/>
+        </Grid>
+
+    </StackPanel>
 </Window>

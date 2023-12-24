@@ -7,4 +7,26 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Buddy.jpg" />
+    <None Remove="Images\Coco.jpg" />
+    <None Remove="Images\Fluffy.jpg" />
+    <None Remove="Images\Slowy.jpg" />
+    <None Remove="Images\Speedy.jpg" />
+    <None Remove="Images\Whiskers.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Buddy.jpg" />
+    <Resource Include="Images\Coco.jpg" />
+    <Resource Include="Images\Fluffy.jpg" />
+    <Resource Include="Images\Slowy.jpg" />
+    <Resource Include="Images\Speedy.jpg" />
+    <Resource Include="Images\Whiskers.jpg" />
+  </ItemGroup>
+
 </Project>
