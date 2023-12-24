@@ -10,7 +10,7 @@
         <TextBlock Text="Pet Adoption Center" 
                    FontSize="25" 
                    HorizontalAlignment="Center"/>
-        <TextBox Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
+        <TextBlock Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
 
         <Button Content="Click to see available pets!" Margin="0,20,0,0" Click="Button_Click_Show_Pets" x:Name="seePetsButton"
                 Width="200"/>

@@ -32,7 +32,11 @@ namespace ProjectWPF.Views
             selectedPetAge.Text = $"{_selectedPet.Age} years old";
             selectedPetType.Text = _selectedPet.Type;
             selectedPetDescription.Text = _selectedPet.Description;
-
+            if (_selectedPet.IsAdopted)
+            {
+                selectedPetIsAdopted.Text = "Not Available - Already Adopted";
+            }
+            else selectedPetIsAdopted.Text = "Available - Up for Adoption";
         }
         public void Button_Click_GoBack(object sender, RoutedEventArgs e)
         {

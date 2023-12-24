@@ -11,7 +11,7 @@
         <TextBlock Text="Pet Adoption Center" 
                    FontSize="25" 
                    HorizontalAlignment="Center"/>
-        <TextBox Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
+        <TextBlock Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -28,9 +28,10 @@
             <Image Grid.RowSpan="5" Grid.Column="0" Margin="15" x:Name="selectedPetPhoto" />
             <TextBlock Grid.Row="0" Grid.Column="1"  Margin="15" x:Name="selectedPetName"/>
             <TextBlock Grid.Row="1" Grid.Column="1"  Margin="15" x:Name="selectedPetType"/>
-            <TextBlock Grid.Row="2" Grid.Column="1"  Margin="15" x:Name="selectedPetAge"/>
-            <TextBlock Grid.Row="3" Grid.Column="1"  Margin="15" x:Name="selectedPetDescription"/>
-            <Button Grid.Row="4" Grid.Column="1" Content="Go Back"  Margin="15" Width="100px" FontSize="20" x:Name="goBack" Click="Button_Click_GoBack"/>
+            <TextBlock Grid.Row="2" Grid.Column="1"  Margin="15" x:Name="selectedPetIsAdopted"/>
+            <TextBlock Grid.Row="3" Grid.Column="1"  Margin="15" x:Name="selectedPetAge"/>
+            <TextBlock Grid.Row="4" Grid.Column="1"  Margin="15" x:Name="selectedPetDescription"/>
+            <Button Grid.Row="5" Grid.Column="1" Content="Go Back"  Margin="15" Width="100px" FontSize="20" x:Name="goBack" Click="Button_Click_GoBack"/>
 
 
         </Grid>
