@@ -27,7 +27,7 @@ namespace ProjectWPF.Views
         public PetDetails(int petIndex) : this()
         {
             _selectedPet = PetDatabase.GetPetsInDatabase()[petIndex];
-            selectedPetPhoto.Source = new BitmapImage(new Uri($"/Images/{_selectedPet.Name}.jpg", UriKind.Relative));
+            selectedPetPhoto.Source = new BitmapImage(new Uri($"/Images/{_selectedPet.Name}.png", UriKind.Relative));
             selectedPetName.Text = _selectedPet.Name;
             selectedPetAge.Text = $"{_selectedPet.Age} years old";
             selectedPetType.Text = _selectedPet.Type;

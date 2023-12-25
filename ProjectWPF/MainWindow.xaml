@@ -12,8 +12,8 @@
                    HorizontalAlignment="Center"/>
         <TextBlock Text="Adopt and rescue a pet today!" FontSize="15" HorizontalAlignment="Center"/>
 
-        <Button Content="Click to see available pets!" Margin="0,20,0,0" Click="Button_Click_Show_Pets" x:Name="seePetsButton"
-                Width="200"/>
+        <Button Content="Click to see available pets!" Margin="0,10,0,0" Click="Button_Click_Show_Pets" x:Name="seePetsButton"
+                Width="200" FontSize="15" Background="CornflowerBlue" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

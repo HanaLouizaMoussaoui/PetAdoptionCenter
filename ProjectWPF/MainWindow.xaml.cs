@@ -24,7 +24,7 @@ namespace ProjectWPF
     public partial class MainWindow : Window
     {
         private const int MAX_PETS = 7;
-        private int[] alreadyGeneratedPets = new int[4];
+        private int[] alreadyGeneratedPets = new int[6] { 50, 50, 50, 50, 50, 50};
         public MainWindow()
         {
             InitializeComponent();
@@ -34,13 +34,13 @@ namespace ProjectWPF
         {
             seePetsButton.Content = "Refresh to see more pets!";
             Pet[] petsToShow = Random_Pets_Generator();
-            pet1photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[0].Name}.jpg", UriKind.Relative));
+            pet1photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[0].Name}.png", UriKind.Relative));
             pet1Name.Text = petsToShow[0].Name;
-            pet2photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[1].Name}.jpg", UriKind.Relative));
+            pet2photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[1].Name}.png", UriKind.Relative));
             pet2Name.Text = petsToShow[1].Name;
-            pet3photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[2].Name}.jpg", UriKind.Relative));
+            pet3photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[2].Name}.png", UriKind.Relative));
             pet3Name.Text = petsToShow[2].Name;
-            pet4photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.jpg", UriKind.Relative));
+            pet4photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.png", UriKind.Relative));
             pet4Name.Text = petsToShow[3].Name;
         }
         private void Pet_Selected(object sender, RoutedEventArgs e)
@@ -70,6 +70,7 @@ namespace ProjectWPF
         }
         private Pet[] Random_Pets_Generator()
         {
+            alreadyGeneratedPets = new int[4] { 50, 50, 50, 50 };
             Pet[] pets = new Pet[4];
             Random randomPetSelector = new Random();
             for (int i = 0; i < pets.Length; i++)
