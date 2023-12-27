@@ -11,15 +11,18 @@
     <None Remove="Images\.jpg" />
     <None Remove="Images\Buddy.png" />
     <None Remove="Images\Bueno.png" />
+    <None Remove="Images\Carrot.png" />
     <None Remove="Images\Charlotte.png" />
     <None Remove="Images\Chichi.png" />
     <None Remove="Images\Coco.jpg" />
     <None Remove="Images\Coco.png" />
     <None Remove="Images\Fluffy.jpg" />
+    <None Remove="Images\Kelp.png" />
     <None Remove="Images\Lily.png" />
     <None Remove="Images\Slowy.jpg" />
     <None Remove="Images\Slowy.png" />
     <None Remove="Images\Speedy.jpg" />
+    <None Remove="Images\Speedy.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,11 +32,13 @@
   <ItemGroup>
     <Resource Include="Images\Buddy.png" />
     <Resource Include="Images\Bueno.png" />
+    <Resource Include="Images\Carrot.png" />
     <Resource Include="Images\Charlotte.png" />
     <Resource Include="Images\Chichi.png" />
     <Resource Include="Images\Coco.png" />
-    <Resource Include="Images\Lily.png" />
+    <Resource Include="Images\Kelp.png" />
     <Resource Include="Images\Slowy.png" />
+    <Resource Include="Images\Speedy.png" />
   </ItemGroup>
 
 </Project>

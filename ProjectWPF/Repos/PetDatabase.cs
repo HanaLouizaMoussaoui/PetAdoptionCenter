@@ -17,8 +17,11 @@ namespace ProjectWPF.Repos
                new Pet("Chichi", 1, false, "Hamster", "A speedy little hamster"),
                new Pet("Slowy", 15, false, "Turtle", "A majestic turtle"),
                new Pet("Bueno", 2, false, "Hamster", "A cute hamster that loves treats"),
-               new Pet("Lily", 10, false, "Turtle", "An elegant turtle"),
+               new Pet("Kelp", 10, false, "Sea Turtle", "An elegant sea turtle"),
                new Pet("Charlotte", 1, false, "Dog", "A playful puppy"),
+               new Pet("Carrot", 7, false, "Dog", "A cute and endearing puppy"),
+               new Pet("Speedy", 1, false, "Hamster", "A very fast and active hamster.."),
+
         };
         public static Pet[] GetPetsInDatabase()
         {
