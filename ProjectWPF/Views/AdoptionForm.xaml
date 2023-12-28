@@ -1,13 +1,14 @@
-﻿<Window x:Class="ProjectWPF.Views.PetDetails"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProjectWPF.Views"
-        mc:Ignorable="d"
-        Title="PetDetails" Height="550" Width="800">
+﻿<Page x:Class="ProjectWPF.Views.AdoptionForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectWPF.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdoptionForm">
     <StackPanel Margin="10" >
-       
+
         <TextBlock Text="Pet Adoption Center" 
                    FontSize="25" 
                    HorizontalAlignment="Center"/>
@@ -32,10 +33,7 @@
             <TextBlock Grid.Row="2" Grid.Column="1"  Margin="15" x:Name="selectedPetIsAdopted"/>
             <TextBlock Grid.Row="3" Grid.Column="1"  Margin="15" x:Name="selectedPetAge"/>
             <TextBlock Grid.Row="4" Grid.Column="1"  Margin="15" x:Name="selectedPetDescription"/>
-            <Button Grid.Row="5" Grid.Column="1" Content="Adopt" Width="100px" FontSize="25" x:Name="adopt" Background="Beige" Click="Go_AdoptPetPage"/>
-            <Button Grid.Row="6" Grid.Column="0" Content="Go Back" Width="90px" FontSize="15" x:Name="goBack" Click="Button_Click_GoBack"/>
-
         </Grid>
 
     </StackPanel>
-</Window>
+</Page>

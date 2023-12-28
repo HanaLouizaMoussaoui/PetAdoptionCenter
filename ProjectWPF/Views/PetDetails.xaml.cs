@@ -45,7 +45,11 @@ namespace ProjectWPF.Views
             this.Close();
             
         }
-
+        
+        public void AdoptPetPage_Go(object sender, RoutedEventArgs e)
+        {
+            MainWindow
+        }
 
     }
 }
