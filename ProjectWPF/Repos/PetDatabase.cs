@@ -1,32 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ProjectWPF.Pets;
 
 namespace ProjectWPF.Repos
 {
     internal static class PetDatabase
     {
-        private static Pet[] petsInDatabase =
+        private static Pet[] petsInDatabase;
+        static PetDatabase()
         {
-             
-               new Pet("Coco", 4, false, "Dog", "A cute white and grey dog"),
-               new Pet("Buddy", 7, false, "Dog", "A friendly brown dog"),
-               new Pet("Chichi", 1, false, "Hamster", "A speedy little hamster"),
-               new Pet("Slowy", 15, false, "Turtle", "A majestic turtle"),
-               new Pet("Bueno", 2, false, "Hamster", "A cute hamster that loves treats"),
-               new Pet("Kelp", 10, false, "Sea Turtle", "An elegant sea turtle"),
-               new Pet("Charlotte", 1, false, "Dog", "A playful puppy"),
-               new Pet("Carrot", 7, false, "Dog", "A cute and endearing puppy"),
-               new Pet("Speedy", 1, false, "Hamster", "A very fast and active hamster"),
-               new Pet("Keywe", 2, false, "Bird", "A kiwi bird that is guaranteed to sweeten your day"),
-               new Pet("Plumpo", 4, false, "Bird", "A cockatiel with minimal thoughts")
+            petsInDatabase = RetrievePetDatabase();
+        }
+        private static Pet[] RetrievePetDatabase()
+        {
+            Pet[] petsInDB = new Pet[11];
+            int arrayCounter = 0;
+            StringBuilder sb = new StringBuilder();
+            string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while (!sr.EndOfStream)
+                    {
+                        line = sr.ReadLine();
+                        petsInDB[arrayCounter] = GetPetFromTextLine(line);
+                        arrayCounter++;
+                    }
+                }
+               
+            }
+            return petsInDB;
 
-        };
+        }
+        private static Pet GetPetFromTextLine(string line)
+        {
+            string[] seperatedPetInfo = line.Split(',');
+            string name = seperatedPetInfo[0];
+            int age = int.Parse(seperatedPetInfo[1]);
+            bool isAdopted= bool.Parse(seperatedPetInfo[2]);
+            string type = seperatedPetInfo[3];
+            string description = seperatedPetInfo[4];
+            Pet newPet = new Pet(name, age, isAdopted, type, description);
+            return newPet;
+        }
         public static Pet[] GetPetsInDatabase()
         {
+            petsInDatabase = RetrievePetDatabase();
             return petsInDatabase;
         }
     }
