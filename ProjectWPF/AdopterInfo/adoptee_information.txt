@@ -1,3 +1,10 @@
-Name: es 
-Email: eAddress: ePhone Number: ePhone Type: eHome Type: TODOPermanent residents in home: TODONumber of pets: TODOName of pet adopted: Type of pet adopted: Name:  
-Email: Address: Phone Number: Phone Type: Home Type: TODOPermanent residents in home: TODONumber of pets: TODOName of pet adopted: BuddyType of pet adopted: Dog
+Name:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Bueno
+Type of pet adopted: Hamster
