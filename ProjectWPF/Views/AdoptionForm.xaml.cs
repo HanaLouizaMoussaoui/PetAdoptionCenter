@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using ProjectWPF.Pets;
 using ProjectWPF.Views;
 using System.IO;
+using System.Printing;
 
 namespace ProjectWPF.Views
 {
@@ -26,7 +27,7 @@ namespace ProjectWPF.Views
     /// </summary>
     public partial class AdoptionForm : Window
     {
-        private Pet _selectedPet;
+        static Pet _selectedPet;
         private int _petIndex;
         public AdoptionForm()
         {
@@ -57,6 +58,21 @@ namespace ProjectWPF.Views
             newMain.Show();
             Close();
         }
+        //add validation here?
+        private string AdopteeData()
+        {
+            string adopteeInfo = $"Name: {txbName.Text} " +
+                $"\nEmail: {txbEmail.Text}" +
+                $"Address: {txbAddress.Text}" +
+                $"Phone Number: {txbPhone.Text}" +
+                $"Phone Type: {txbPhoneType.Text}" +
+                $"Home Type: {}" +
+                $"Permanent residents in home: {}" +
+                $"Number of pets: {}" +
+                $"Name of pet adopted: {selectedPetName.Text}" +
+                $"Type of pet adopted: {selectedPetType.Text}";
+            return adopteeInfo;
+        }
         private void SaveToFile()
         {
             string filePath = "..\\..\\..\\AdopterInfo\\adoptee_information.txt";
@@ -64,7 +80,7 @@ namespace ProjectWPF.Views
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    writer.WriteLine("Hi!");
+                    writer.WriteLine("");
                     MessageBox.Show("Information saved properly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }

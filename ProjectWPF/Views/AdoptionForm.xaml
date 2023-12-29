@@ -32,7 +32,7 @@
         </GroupBox>
         <GroupBox Header="Adopter's Information" Margin="10">
             <StackPanel Margin="5" Orientation="Vertical">
-                <Grid>
+                <Grid Margin="0,0,30,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.2*"/>
                         <ColumnDefinition Width="*"/>
@@ -45,11 +45,15 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
-                <TextBox Grid.Row="0" Grid.Column="1"/>
-                    <Label Content="Address" Grid.Row="1" Grid.Column="0"/>
-                    <Label Content="Email" Grid.Row="2" Grid.Column="0"/>
+                <TextBox Grid.Row="0" x:Name="txbName" Grid.Column="1" Margin="2"/>
+                <Label Content="Address" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox Grid.Row="1" x:Name="txbAddress" Grid.Column="1" Margin="2"/>
+                <Label Content="Email" Grid.Row="2" Grid.Column="0"/>
+                    <TextBox Grid.Row="2" x:Name="txbEmail" Grid.Column="1" Margin="2"/>
                     <Label Content="Phone Number" Grid.Row="3" Grid.Column="0"/>
+                    <TextBox Grid.Row="3" x:Name="txbPhone" Grid.Column="1" Margin="2"/>
                     <Label Content="Phone type" Grid.Row="4" Grid.Column="0"/>
+                    <TextBox Grid.Row="4" x:Name="txbPhoneType" Grid.Column="1" Margin="2"/>
                 </Grid>
                 
             </StackPanel>
