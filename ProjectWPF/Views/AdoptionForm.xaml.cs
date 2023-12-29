@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectWPF.Pets;
 using ProjectWPF.Views;
+using System.IO;
 
 namespace ProjectWPF.Views
 {
@@ -45,6 +46,7 @@ namespace ProjectWPF.Views
             {
                 _selectedPet.IsAdopted = true;
             }
+            SaveToFile();
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();
             popup.Show();
             Close();
@@ -54,6 +56,22 @@ namespace ProjectWPF.Views
             MainWindow newMain = new MainWindow();
             newMain.Show();
             Close();
+        }
+        private void SaveToFile()
+        {
+            string filePath = "..\\..\\..\\AdopterInfo\\adoptee_information.txt";
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Hi!");
+                    MessageBox.Show("Information saved properly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

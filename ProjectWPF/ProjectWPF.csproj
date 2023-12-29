@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="AdopterInfo\" />
     <Folder Include="Pets\" />
   </ItemGroup>
 
