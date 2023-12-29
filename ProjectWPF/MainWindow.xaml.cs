@@ -37,12 +37,12 @@ namespace ProjectWPF
             previousGeneratedPets = petsToGenerate;
             alreadyGeneratedPets = petsToGenerate;
             showingOldPetsAgain = true;
-            ShowPets(previousGeneratedPets);
+            ShowPets();
         }
 
         private void Button_Click_Show_Pets(object sender, RoutedEventArgs e)
         {
-            ShowPets(alreadyGeneratedPets);
+            ShowPets();
         }
         private void Pet_Selected(object sender, RoutedEventArgs e)
         {
@@ -96,7 +96,7 @@ namespace ProjectWPF
             }
             return pets;
         }
-        private void ShowPets(int[] previousGeneratedPets)
+        private void ShowPets()
         {
             seePetsButton.Content = "Refresh to see more pets!";
             Pet[] petsToShow;
