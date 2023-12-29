@@ -47,7 +47,8 @@ namespace ProjectWPF.Views
             {
                 _selectedPet.IsAdopted = true;
             }
-            SaveToFile();
+            string adopteeData = GetAdopteeData();
+            SaveToFile(adopteeData);
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();
             popup.Show();
             Close();
@@ -59,28 +60,28 @@ namespace ProjectWPF.Views
             Close();
         }
         //add validation here?
-        private string AdopteeData()
+        private string GetAdopteeData()
         {
             string adopteeInfo = $"Name: {txbName.Text} " +
                 $"\nEmail: {txbEmail.Text}" +
                 $"Address: {txbAddress.Text}" +
                 $"Phone Number: {txbPhone.Text}" +
                 $"Phone Type: {txbPhoneType.Text}" +
-                $"Home Type: {}" +
-                $"Permanent residents in home: {}" +
-                $"Number of pets: {}" +
+                $"Home Type: TODO" +
+                $"Permanent residents in home: TODO" +
+                $"Number of pets: TODO" +
                 $"Name of pet adopted: {selectedPetName.Text}" +
                 $"Type of pet adopted: {selectedPetType.Text}";
             return adopteeInfo;
         }
-        private void SaveToFile()
+        private void SaveToFile(string content)
         {
             string filePath = "..\\..\\..\\AdopterInfo\\adoptee_information.txt";
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    writer.WriteLine("");
+                    writer.Write(content);
                     MessageBox.Show("Information saved properly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
