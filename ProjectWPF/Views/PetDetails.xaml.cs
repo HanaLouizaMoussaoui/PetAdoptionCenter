@@ -38,7 +38,7 @@ namespace ProjectWPF.Views
             }
             else selectedPetIsAdopted.Text = "Available - Up for Adoption";
         }
-        public void Button_Click_GoBack(object sender, RoutedEventArgs e)
+        public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
         {
             MainWindow newMain = new MainWindow();
             newMain.Show();
@@ -46,9 +46,11 @@ namespace ProjectWPF.Views
             
         }
         
-        public void AdoptPetPage_Go(object sender, RoutedEventArgs e)
+        public void BtnClick__GoToAdoptPetPage(object sender, RoutedEventArgs e)
         {
-            MainWindow
+            AdoptionForm newAdoption = new AdoptionForm();
+            newAdoption.Show();
+            this.Close();
         }
 
     }

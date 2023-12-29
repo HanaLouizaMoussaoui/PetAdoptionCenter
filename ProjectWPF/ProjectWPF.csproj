@@ -18,7 +18,9 @@
     <None Remove="Images\Coco.png" />
     <None Remove="Images\Fluffy.jpg" />
     <None Remove="Images\Kelp.png" />
+    <None Remove="Images\Keywe.png" />
     <None Remove="Images\Lily.png" />
+    <None Remove="Images\Plumpo.png" />
     <None Remove="Images\Slowy.jpg" />
     <None Remove="Images\Slowy.png" />
     <None Remove="Images\Speedy.jpg" />
@@ -37,6 +39,8 @@
     <Resource Include="Images\Chichi.png" />
     <Resource Include="Images\Coco.png" />
     <Resource Include="Images\Kelp.png" />
+    <Resource Include="Images\Keywe.png" />
+    <Resource Include="Images\Plumpo.png" />
     <Resource Include="Images\Slowy.png" />
     <Resource Include="Images\Speedy.png" />
   </ItemGroup>
