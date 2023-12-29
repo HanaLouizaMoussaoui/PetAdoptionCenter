@@ -64,14 +64,14 @@ namespace ProjectWPF.Views
         {
             string adopteeInfo = $"Name: {txbName.Text} " +
                 $"\nEmail: {txbEmail.Text}" +
-                $"Address: {txbAddress.Text}" +
-                $"Phone Number: {txbPhone.Text}" +
-                $"Phone Type: {txbPhoneType.Text}" +
-                $"Home Type: TODO" +
-                $"Permanent residents in home: TODO" +
-                $"Number of pets: TODO" +
-                $"Name of pet adopted: {selectedPetName.Text}" +
-                $"Type of pet adopted: {selectedPetType.Text}";
+                $"\nAddress: {txbAddress.Text}" +
+                $"\nPhone Number: {txbPhone.Text}" +
+                $"\nPhone Type: {txbPhoneType.Text}" +
+                $"\nHome Type: TODO" +
+                $"\nPermanent residents in home: TODO" +
+                $"\nNumber of pets: TODO" +
+                $"\nName of pet adopted: {selectedPetName.Text}" +
+                $"\nType of pet adopted: {selectedPetType.Text}";
             return adopteeInfo;
         }
         private void SaveToFile(string content)
