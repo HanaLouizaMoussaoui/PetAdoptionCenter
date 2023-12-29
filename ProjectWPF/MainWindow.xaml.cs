@@ -25,24 +25,24 @@ namespace ProjectWPF
     {
         private const int MAX_PETS = 11;
         //note the 50 here is a placeholder
-        private int[] alreadyGeneratedPets = new int[11] { 50, 50, 50, 50, 50, 50,50,50, 50, 50, 50};
+        private int[] alreadyGeneratedPets = new int[4] { 50, 50, 50, 50 };
+        private int[] previousGeneratedPets = new int[4];
+        private bool showingOldPetsAgain = false;
         public MainWindow()
         {
             InitializeComponent();
         }
+        public MainWindow(int[] petsToGenerate): this()
+        {
+            previousGeneratedPets = petsToGenerate;
+            alreadyGeneratedPets = petsToGenerate;
+            showingOldPetsAgain = true;
+            ShowPets(previousGeneratedPets);
+        }
 
         private void Button_Click_Show_Pets(object sender, RoutedEventArgs e)
         {
-            seePetsButton.Content = "Refresh to see more pets!";
-            Pet[] petsToShow = Random_Pets_Generator();
-            pet1photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[0].Name}.png", UriKind.Relative));
-            pet1Name.Text = petsToShow[0].Name;
-            pet2photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[1].Name}.png", UriKind.Relative));
-            pet2Name.Text = petsToShow[1].Name;
-            pet3photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[2].Name}.png", UriKind.Relative));
-            pet3Name.Text = petsToShow[2].Name;
-            pet4photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.png", UriKind.Relative));
-            pet4Name.Text = petsToShow[3].Name;
+            ShowPets(alreadyGeneratedPets);
         }
         private void Pet_Selected(object sender, RoutedEventArgs e)
         {
@@ -64,7 +64,7 @@ namespace ProjectWPF
                         petIndex = alreadyGeneratedPets[3];
                         break;
                 }
-                PetDetails petDetails = new PetDetails(petIndex);
+                PetDetails petDetails = new PetDetails(petIndex,alreadyGeneratedPets);
                 petDetails.Show();
                 this.Close();
             }
@@ -85,6 +85,38 @@ namespace ProjectWPF
                 alreadyGeneratedPets[i] = randomPet;
             }
             return pets;
+        }
+        private Pet[] PreviousPetsGenerator(int[] petsToGenerate)
+        {
+            Pet[] pets = new Pet[4];
+            for (int i = 0; i < pets.Length; i++)
+            {
+                int petIndex = petsToGenerate[i];
+                pets[i] = PetDatabase.GetPetsInDatabase()[petIndex];
+            }
+            return pets;
+        }
+        private void ShowPets(int[] previousGeneratedPets)
+        {
+            seePetsButton.Content = "Refresh to see more pets!";
+            Pet[] petsToShow;
+            if (showingOldPetsAgain)
+            {
+                petsToShow = PreviousPetsGenerator(previousGeneratedPets);
+                showingOldPetsAgain = false;
+            }
+            else
+            {
+                petsToShow = Random_Pets_Generator();
+            }
+            pet1photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[0].Name}.png", UriKind.Relative));
+            pet1Name.Text = petsToShow[0].Name;
+            pet2photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[1].Name}.png", UriKind.Relative));
+            pet2Name.Text = petsToShow[1].Name;
+            pet3photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[2].Name}.png", UriKind.Relative));
+            pet3Name.Text = petsToShow[2].Name;
+            pet4photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.png", UriKind.Relative));
+            pet4Name.Text = petsToShow[3].Name;
         }
     }
 }

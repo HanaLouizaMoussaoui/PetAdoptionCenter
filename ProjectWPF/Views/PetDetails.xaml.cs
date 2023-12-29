@@ -21,13 +21,15 @@ namespace ProjectWPF.Views
     {
         private Pet _selectedPet;
         private int currentPetIndex;
+        private int[] currentAlreadyGeneratedPets;
         public PetDetails()
         {
             InitializeComponent();
         }
-        public PetDetails(int petIndex) : this()
+        public PetDetails(int petIndex, int[] alreadyGeneratedPets) : this()
         {
-            currentPetIndex = petIndex;
+            currentAlreadyGeneratedPets = alreadyGeneratedPets;
+            currentPetIndex = petIndex; // Saving the pet index in a global variable so we can pass it later
             _selectedPet = PetDatabase.GetPetsInDatabase()[petIndex];
             selectedPetPhoto.Source = new BitmapImage(new Uri($"/Images/{_selectedPet.Name}.png", UriKind.Relative));
             selectedPetName.Text = _selectedPet.Name;
@@ -42,7 +44,7 @@ namespace ProjectWPF.Views
         }
         public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
         {
-            MainWindow newMain = new MainWindow();
+            MainWindow newMain = new MainWindow(currentAlreadyGeneratedPets);
             newMain.Show();
             this.Close();
             
