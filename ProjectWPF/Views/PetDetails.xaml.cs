@@ -52,9 +52,17 @@ namespace ProjectWPF.Views
         
         public void BtnClick__GoToAdoptPetPage(object sender, RoutedEventArgs e)
         {
-            AdoptionForm newAdoption = new AdoptionForm(currentPetIndex);
-            newAdoption.Show();
-            this.Close();
+            if (PetDatabase.GetPetsInDatabase()[currentPetIndex].IsAdopted)
+            {
+                NotAvailableAdoptionPopUp notAdoptable = new NotAvailableAdoptionPopUp();
+                notAdoptable.Show();
+                this.Close();
+            }
+            else {
+                AdoptionForm newAdoption = new AdoptionForm(currentPetIndex);
+                newAdoption.Show();
+                this.Close();
+            }
         }
 
     }

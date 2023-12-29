@@ -1,0 +1,20 @@
+﻿<Window x:Class="ProjectWPF.Views.NotAvailableAdoptionPopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectWPF.Views"
+        mc:Ignorable="d"
+        Title="NotAvailableAdoptionPopUp" Height="243" Width="474"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Image/>
+        <!--Image of pet will go here-->
+        <TextBlock FontFamily="Bauhaus 93" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40px" TextWrapping="Wrap" Text="Sorry" Foreground="#db7b7b"/>
+        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Run Text="This pet is not available for adoption "/>
+            <Run Text="" x:Name="selectedPetName"/>
+        </TextBlock>
+        <Button Click="BtnClick_ClosePopup" Height="20px" Width="40px" Content="Close" Margin="10"/>
+    </StackPanel>
+</Window>
