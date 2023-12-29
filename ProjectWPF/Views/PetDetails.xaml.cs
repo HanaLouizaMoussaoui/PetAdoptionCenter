@@ -20,12 +20,14 @@ namespace ProjectWPF.Views
     public partial class PetDetails : Window
     {
         private Pet _selectedPet;
+        private int currentPetIndex;
         public PetDetails()
         {
             InitializeComponent();
         }
         public PetDetails(int petIndex) : this()
         {
+            currentPetIndex = petIndex;
             _selectedPet = PetDatabase.GetPetsInDatabase()[petIndex];
             selectedPetPhoto.Source = new BitmapImage(new Uri($"/Images/{_selectedPet.Name}.png", UriKind.Relative));
             selectedPetName.Text = _selectedPet.Name;
@@ -48,7 +50,7 @@ namespace ProjectWPF.Views
         
         public void BtnClick__GoToAdoptPetPage(object sender, RoutedEventArgs e)
         {
-            AdoptionForm newAdoption = new AdoptionForm();
+            AdoptionForm newAdoption = new AdoptionForm(currentPetIndex);
             newAdoption.Show();
             this.Close();
         }
