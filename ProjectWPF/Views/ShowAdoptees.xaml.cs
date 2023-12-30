@@ -35,6 +35,7 @@ namespace ProjectWPF.Views
             {
                 adopteeTextBlocks[i].Text = $"{adoptees[i].Name}";
             }
+
         }
     }
     
