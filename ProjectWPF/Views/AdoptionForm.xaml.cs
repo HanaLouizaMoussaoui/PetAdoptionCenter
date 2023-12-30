@@ -51,8 +51,6 @@ namespace ProjectWPF.Views
             string adopteeData = GetAdopteeData();
             // Saving the adoptee data in the adoptee information file
             SaveToFile(adopteeData);
-            // Updating the database to contain the new adoptee
-            AdopteeDatabase.GetAdopteesInDatabase(_selectedPet,adopteeData);
 
             // Getting the pet database
             string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";

@@ -15,38 +15,7 @@ namespace ProjectWPF.Repos
     {
         private static List<Adoptee> adopteesInDatabase = new List<Adoptee> { };
 
-        private static List<Adoptee> RetrieveAdopteeDatabaseWithNewInfo(Pet adoptedPet,string adopteeInfo)
-        {
-            List<Adoptee> adopteesInDB = new List<Adoptee> { };
-            StringBuilder sb = new StringBuilder();
-            string filePath = "..\\..\\..\\AdopterInfo\\adoptee_information.txt";
-            if (File.Exists(filePath))
-            {
-                Adoptee newAdoptee = new Adoptee();
-                using (StreamReader sr = new StreamReader(filePath))
-                {
-                    string line;
-                    while (!sr.EndOfStream)
-                    {
-                        line = sr.ReadLine();
-                        if (!CheckAdopteeAlreadyExist(line))
-                        {
-                            newAdoptee = GetAdopteeFromTextLine(line);
-                            adopteesInDB.Add(newAdoptee);
-                        }
-                        else
-                        {
-                            newAdoptee = GetAdoptee(adopteeInfo);
-                            
-                        }
-                        AddPet(newAdoptee,adopteeInfo,adoptedPet);
-                    }
-                }
-                return adopteesInDB;
-            }
-            else
-            { throw new Exception("womp womp"); };
-        }
+  
         private static List<Adoptee> RetrieveAdopteeDatabase()
         {
             List<Adoptee> adopteesInDB = new List<Adoptee> { };
@@ -67,6 +36,7 @@ namespace ProjectWPF.Repos
                         adopteesInDB.Add(newAdoptee);
                     }
                 }
+                adopteesInDatabase = adopteesInDB;
                 return adopteesInDB;
             }
             else
@@ -109,17 +79,11 @@ namespace ProjectWPF.Repos
                 throw new Exception();
             }
         }
-        public static List<Adoptee> GetAdopteesInDatabase(Pet adoptedPet=null,string adopteeInfo=null)
+        public static List<Adoptee> GetAdopteesInDatabase()
         {
             List<Adoptee> adopteesInDB = new List<Adoptee> { };
-            if (adoptedPet==null || adopteeInfo == null)
-            {
-                adopteesInDB= RetrieveAdopteeDatabase();
-            }
-            else
-            {
-               adopteesInDB= RetrieveAdopteeDatabaseWithNewInfo(adoptedPet, adopteeInfo);
-            }
+
+            adopteesInDB= RetrieveAdopteeDatabase();
  
             return adopteesInDB;
         }
@@ -136,27 +100,6 @@ namespace ProjectWPF.Repos
                 }
             }
             return alreadyExists;
-        }
-        private static void AddPet(Adoptee adoptee,string adopteeInfo, Pet adoptedPet)
-        {
-                string[] seperatedNewAdopteeInfo = adopteeInfo.Split(',');
-                if (seperatedNewAdopteeInfo[0] == adoptee.Name)
-                {
-                    adoptee.AddPetToAdoptee(adoptedPet);
-                }
-        }
-        private static Adoptee GetAdoptee(string adopteeInfo)
-        {
-            string[] seperatedAdopteeInfo = adopteeInfo.Split(',');
-            string name = seperatedAdopteeInfo[0];
-            foreach (Adoptee adoptee in adopteesInDatabase)
-            {
-                if (adoptee.Name == name)
-                {
-                    return adoptee;
-                }
-            }
-            return null;
         }
     }
 }

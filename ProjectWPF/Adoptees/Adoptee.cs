@@ -4,12 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using ProjectWPF.Pets;
 
 namespace ProjectWPF.Adoptees
 {
     internal class Adoptee
     {
+        private string _id;
         private string _name;
         private string _email;
         private string _address;
@@ -27,7 +29,7 @@ namespace ProjectWPF.Adoptees
             _petsInHome = 0;
             _adoptedPets = new List<Pet> { };
         }
-            
+
 
         public Adoptee(string name, string email, string address, long phone, int residents, int pets)
         {
@@ -38,6 +40,7 @@ namespace ProjectWPF.Adoptees
             _residentsInHome = residents;
             _petsInHome = pets;
             _adoptedPets = new List<Pet> { };
+            _id = GetId();
         }
         public string Name
         {
@@ -47,11 +50,19 @@ namespace ProjectWPF.Adoptees
         {
             get { return _adoptedPets; }
         }
+        public string ID
+        {
+            get { return _id; }
         public void AddPetToAdoptee(Pet petToAdd)
         {
             _adoptedPets.Add(petToAdd);
         }
-
+        private string GetId()
+        {
+            string phoneNumberSubString = (_phoneNumber.ToString()).Substring(0, 5);
+            string id = $"{Name}{phoneNumberSubString}";
+            return id;
+        }
 
     }
 }
