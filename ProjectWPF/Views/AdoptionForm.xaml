@@ -42,7 +42,6 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
                 <TextBox Grid.Row="0" x:Name="txbName" Grid.Column="1" Margin="2"/>
@@ -52,8 +51,6 @@
                     <TextBox Grid.Row="2" x:Name="txbEmail" Grid.Column="1" Margin="2"/>
                     <Label Content="Phone Number" Grid.Row="3" Grid.Column="0"/>
                     <TextBox Grid.Row="3" x:Name="txbPhone" Grid.Column="1" Margin="2"/>
-                    <Label Content="Phone type" Grid.Row="4" Grid.Column="0"/>
-                    <TextBox Grid.Row="4" x:Name="txbPhoneType" Grid.Column="1" Margin="2"/>
                 </Grid>
                 
             </StackPanel>

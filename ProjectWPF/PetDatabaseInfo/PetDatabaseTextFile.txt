@@ -6,6 +6,6 @@ Bueno,2,false,Hamster,A cute hamster that loves treats
 Kelp,10,false,Sea Turtle,An elegant sea turtle
 Charlotte,1,false,Dog,A playful puppy
 Carrot,7,false,Dog,A cute and endearing puppy
-Speedy,1,false,Hamster,A very fast and active hamster
+Speedy,1,true,Hamster,A very fast and active hamster
 Keywe,2,false, Bird,A kiwi bird that is guaranteed to sweeten your day
 Plumpo,4,false,Bird,A cockatiel with minimal thoughts

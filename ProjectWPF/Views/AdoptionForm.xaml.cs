@@ -19,6 +19,7 @@ using ProjectWPF.Pets;
 using ProjectWPF.Views;
 using System.IO;
 using System.Printing;
+using ProjectWPF.Adoptees;
 
 namespace ProjectWPF.Views
 {
@@ -43,16 +44,29 @@ namespace ProjectWPF.Views
         }
         public void BtnClick_SubmittedAdoptionForm(object sender, RoutedEventArgs e)
         {
-            string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
+            // Fetching the pet that's being adopted
             _selectedPet = PetDatabase.GetPetsInDatabase()[_petIndex];
+
+            // Getting the adoptee data from the user info
+            string adopteeData = GetAdopteeData();
+            // Saving the adoptee data in the adoptee information file
+            SaveToFile(adopteeData);
+            // Updating the database to contain the new adoptee
+            AdopteeDatabase.GetAdopteesInDatabase(_selectedPet,adopteeData);
+
+            // Getting the pet database
+            string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
+          
+            // Updating the pet adopted status from false to true in the file database
             int lineIndexToChange = _petIndex;
             string newTextForLine = $"{_selectedPet.Name},{_selectedPet.Age},true,{_selectedPet.Type},{_selectedPet.Description}";
             string[] lines = File.ReadAllLines(filePath);
             lines[lineIndexToChange] = newTextForLine;
             File.WriteAllLines(filePath, lines);
+
+            // This below line shouldnt be necessary, need to delete 
             _selectedPet.IsAdopted = true;
-            string adopteeData = GetAdopteeData();
-            SaveToFile(adopteeData);
+
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();
             popup.Show();
             Close();
@@ -66,16 +80,7 @@ namespace ProjectWPF.Views
         //add validation here?
         private string GetAdopteeData()
         {
-            string adopteeInfo = $"Name: {txbName.Text} " +
-                $"\nEmail: {txbEmail.Text}" +
-                $"\nAddress: {txbAddress.Text}" +
-                $"\nPhone Number: {txbPhone.Text}" +
-                $"\nPhone Type: {txbPhoneType.Text}" +
-                $"\nHome Type: TODO" +
-                $"\nPermanent residents in home: TODO" +
-                $"\nNumber of pets: TODO" +
-                $"\nName of pet adopted: {selectedPetName.Text}" +
-                $"\nType of pet adopted: {selectedPetType.Text} \n";
+            string adopteeInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text}";
             return adopteeInfo;
         }
         private void SaveToFile(string content)
