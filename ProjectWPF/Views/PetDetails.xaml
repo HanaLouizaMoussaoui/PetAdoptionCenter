@@ -34,7 +34,7 @@
             <TextBlock Grid.Row="3" Grid.Column="1"  Margin="15" x:Name="selectedPetAge"/>
             <TextBlock Grid.Row="4" Grid.Column="1"  Margin="15" x:Name="selectedPetDescription"/>
             <Button Grid.Row="5" Grid.Column="1" Content="Adopt" Width="100px" FontSize="25" x:Name="adopt" Background="Beige" Click="BtnClick__GoToAdoptPetPage"/>
-            <Button Grid.Row="6" Grid.Column="0" Content="Go Back" Width="90px" FontSize="15" x:Name="goBack" Click="BtnClick_GoBackMain"/>
+            <Button Grid.Row="6" Grid.Column="0" Content="Go Back" Width="90px" FontSize="20" x:Name="goBack" Click="BtnClick_GoBackMain"/>
 
         </Grid>
 

@@ -39,6 +39,13 @@ namespace ProjectWPF.Views
             }
 
         }
+        public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
+        {
+            MainWindow newMain = new MainWindow();
+            newMain.Show();
+            this.Close();
+
+        }
     }
     
 }
