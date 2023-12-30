@@ -23,11 +23,24 @@ namespace ProjectWPF.Repos
             {
                 using (StreamReader sr = new StreamReader(filePath))
                 {
+                    Adoptee newAdoptee= new Adoptee();
                     string line;
                     while (!sr.EndOfStream)
                     {
                         line = sr.ReadLine();
-                        adopteesInDatabase.Add(GetAdopteeFromTextLine(line,adoptedPet,adopteeInfo));
+                        if (!CheckAdopteeAlreadyExist(line))
+                        {
+                            newAdoptee = GetAdopteeFromTextLine(line, adoptedPet, adopteeInfo);
+                            adopteesInDatabase.Add(newAdoptee);
+                        }
+                        else
+                        {
+                            if (adopteeInfo != null)
+                            {
+                                newAdoptee = GetAdoptee(adopteeInfo);
+                            }
+                        }
+                        AddPet(newAdoptee,adopteeInfo,adoptedPet);
                     }
                 }
             }
@@ -47,13 +60,9 @@ namespace ProjectWPF.Repos
                 int residents = 1; // TEMP
                 int pets = 0; // TEMP 
                 Adoptee newAdoptee = new Adoptee(name, email, address, phoneNumber, residents,pets);
-                if (adopteeInfo != null)
+                if (adoptedPet != null)
                 {
-                    string[] seperatedNewAdopteeInfo = adopteeInfo.Split(',');
-                    if (seperatedNewAdopteeInfo[0] == name)
-                    {
-                        newAdoptee.AddPetToAdoptee(adoptedPet);
-                    }
+                    AddPet(newAdoptee,adopteeInfo,adoptedPet);
                 }
                 return newAdoptee;
             }
@@ -66,6 +75,44 @@ namespace ProjectWPF.Repos
         {
             RetrieveAdopteeDatabase(adoptedPet,adopteeInfo);
             return adopteesInDatabase;
+        }
+        private static bool CheckAdopteeAlreadyExist(string adopteeInfo)
+        {
+            bool alreadyExists = false;
+            string[] seperatedAdopteeInfo = adopteeInfo.Split(',');
+            string name = seperatedAdopteeInfo[0];
+            foreach (Adoptee adoptee in adopteesInDatabase)
+            {
+                if (adoptee.Name == name)
+                {
+                    alreadyExists = true;
+                }
+            }
+            return alreadyExists;
+        }
+        private static void AddPet(Adoptee adoptee,string adopteeInfo, Pet adoptedPet)
+        {
+            if (adopteeInfo != null)
+            {
+                string[] seperatedNewAdopteeInfo = adopteeInfo.Split(',');
+                if (seperatedNewAdopteeInfo[0] == adoptee.Name)
+                {
+                    adoptee.AddPetToAdoptee(adoptedPet);
+                }
+            }
+        }
+        private static Adoptee GetAdoptee(string adopteeInfo)
+        {
+            string[] seperatedAdopteeInfo = adopteeInfo.Split(',');
+            string name = seperatedAdopteeInfo[0];
+            foreach (Adoptee adoptee in adopteesInDatabase)
+            {
+                if (adoptee.Name == name)
+                {
+                    return adoptee;
+                }
+            }
+            return null;
         }
     }
 }

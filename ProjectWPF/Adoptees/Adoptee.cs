@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectWPF.Pets;
@@ -16,6 +17,18 @@ namespace ProjectWPF.Adoptees
         private int _residentsInHome;
         private int _petsInHome;
         private List<Pet> _adoptedPets;
+        public Adoptee()
+        {
+            _name = "N/A";
+            _email = "N/A";
+            _address = "N/A";
+            _phoneNumber = 0;
+            _residentsInHome = 0;
+            _petsInHome = 0;
+            _adoptedPets = new List<Pet> { };
+        }
+            
+
         public Adoptee(string name, string email, string address, long phone, int residents, int pets)
         {
             _name = name;
