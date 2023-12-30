@@ -28,7 +28,7 @@ namespace ProjectWPF.Views
         }
         private void DisplayAdoptees()
         {
-            List<Adoptee> adoptees = AdopteeDatabase.GetAdopteesInDatabase();
+            List<Adoptee> adoptees = AdopteeDatabase.RetrieveAdopteeDatabase();
             TextBlock[] adopteeNameTextBlocks = {adoptee1Name, adoptee2Name, adoptee3Name, adoptee4Name};
             TextBlock[] adopteePetTextBlocks = { adoptee1Pets, adoptee2Pets, adoptee3Pets, adoptee4Pets };
             if (adoptees.Count==0)
@@ -38,7 +38,18 @@ namespace ProjectWPF.Views
             for (int i = 0; i < adoptees.Count && i < adopteeNameTextBlocks.Length; i++)
             {
                 adopteeNameTextBlocks[i].Text = $"{adoptees[i].Name}";
-                adopteePetTextBlocks[i].Text= $"Adopted {adoptees[i].AdoptedPet[0].Name}"; // For now, only showing one pet they adopted
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Adopted ");
+                sb.Append($"{adoptees[i].AdoptedPets[0].Name} ");
+        
+                    for (int j = 1; j < adoptees[i].AdoptedPets.Count; j++)
+                    {
+                        sb.Append($"and ");
+                        string petName = adoptees[i].AdoptedPets[j].Name;
+                        sb.Append($"{petName} ");
+                    }
+
+                adopteePetTextBlocks[i].Text = sb.ToString();
             }
 
         }

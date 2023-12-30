@@ -14,7 +14,7 @@ namespace ProjectWPF.Repos
     internal static class AdopteeDatabase
     {
         private static List<Adoptee> adopteesInDatabase = new List<Adoptee> { };
-        private static List<Adoptee> RetrieveAdopteeDatabase()
+        public static List<Adoptee> RetrieveAdopteeDatabase()
         {
             List<Adoptee> adopteesInDB = new List<Adoptee> { };
             StringBuilder sb = new StringBuilder();
@@ -34,9 +34,10 @@ namespace ProjectWPF.Repos
                         {
                             newAdoptee.AddPetToAdoptee(adoptedPet);
                             adopteesInDB.Add(newAdoptee);
+                            adopteesInDatabase = adopteesInDB.ToList();
                         }
                     }
-                    adopteesInDatabase = adopteesInDB;
+                    adopteesInDatabase.Clear();
                     return adopteesInDB;
                 }
 
@@ -85,14 +86,6 @@ namespace ProjectWPF.Repos
             {
                 throw new Exception();
             }
-        }
-        public static List<Adoptee> GetAdopteesInDatabase()
-        {
-            List<Adoptee> adopteesInDB = new List<Adoptee> { };
-
-            adopteesInDB= RetrieveAdopteeDatabase();
- 
-            return adopteesInDB;
         }
         private static bool CheckAdopteeAlreadyExist(Adoptee newAdoptee, Pet adoptedPet)
         {

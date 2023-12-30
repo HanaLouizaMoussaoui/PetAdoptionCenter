@@ -46,7 +46,7 @@ namespace ProjectWPF.Adoptees
         {
             get { return _name; }
         }
-        public List<Pet> AdoptedPet
+        public List<Pet> AdoptedPets
         {
             get { return _adoptedPets; }
         }
