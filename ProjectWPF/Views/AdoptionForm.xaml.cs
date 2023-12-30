@@ -59,13 +59,13 @@ namespace ProjectWPF.Views
           
             // Updating the pet adopted status from false to true in the file database
             int lineIndexToChange = _petIndex;
-            string newTextForLine = $"{_selectedPet.Name},{_selectedPet.Age},true,{_selectedPet.Type},{_selectedPet.Description}\n";
+            string newTextForLine = $"{_selectedPet.Name},{_selectedPet.Age},true,{_selectedPet.Type},{_selectedPet.Description}";
             string[] lines = File.ReadAllLines(filePath);
             lines[lineIndexToChange] = newTextForLine;
             File.WriteAllLines(filePath, lines);
 
-            // This below line shouldnt be necessary, need to delete 
-            _selectedPet.IsAdopted = true;
+            // Updating the pet database
+            PetDatabase.GetPetsInDatabase();
 
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();
             popup.Show();
@@ -80,7 +80,7 @@ namespace ProjectWPF.Views
         //add validation here?
         private string GetAdopteeData()
         {
-            string adopteeInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text}\n";
+            string adopteeInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
             return adopteeInfo;
         }
         private void SaveToFile(string content)

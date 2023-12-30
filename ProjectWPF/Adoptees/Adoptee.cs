@@ -24,7 +24,7 @@ namespace ProjectWPF.Adoptees
             _phoneNumber = phone;
             _residentsInHome = residents;
             _petsInHome = pets;
-            _adoptedPets = new List<Pet>();
+            _adoptedPets = new List<Pet> { };
         }
         public string Name
         {

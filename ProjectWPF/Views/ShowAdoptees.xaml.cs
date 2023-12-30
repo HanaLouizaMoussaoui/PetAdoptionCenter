@@ -28,11 +28,12 @@ namespace ProjectWPF.Views
         }
         private void DisplayAdoptees()
         {
-            List<Adoptee> adoptees = AdopteeDatabase.FetchAdoptees();
-            switch (adoptees.Count)
+            List<Adoptee> adoptees = AdopteeDatabase.GetAdopteesInDatabase();
+            TextBlock[] adopteeTextBlocks = { adoptee1Name, adoptee2Name, adoptee3Name, adoptee4Name };
+
+            for (int i = 0; i < adoptees.Count && i < adopteeTextBlocks.Length; i++)
             {
-                case 1:
-                    adoptee1Name.Text = adoptees[0].Name; break;
+                adopteeTextBlocks[i].Text = adoptees[i].Name;
             }
         }
     }

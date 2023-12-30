@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace ProjectWPF.Pets
 {
@@ -17,13 +19,22 @@ namespace ProjectWPF.Pets
         private bool _isAdopted;
         #endregion
         #region Constructors
+        public Pet()
+        {
+            Name = "N/A";
+            Age = 0;
+            IsAdopted = false;
+            Description = DEFAULT_DESCRIPTION;
+            Type = "N/A";
+
+        }
         public Pet(string name, int age, bool isAdopted, string type)
         {
             Name = name;
             Age = age;
             IsAdopted = isAdopted;
             Description = DEFAULT_DESCRIPTION;
-            _type = type;
+            Type = type;
         }
         public Pet(string name, int age, bool isAdopted, string type, string description) : this (name,age,isAdopted,type)
         {
