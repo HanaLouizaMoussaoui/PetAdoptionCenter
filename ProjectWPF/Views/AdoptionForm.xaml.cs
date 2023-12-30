@@ -75,7 +75,7 @@ namespace ProjectWPF.Views
                 $"\nPermanent residents in home: TODO" +
                 $"\nNumber of pets: TODO" +
                 $"\nName of pet adopted: {selectedPetName.Text}" +
-                $"\nType of pet adopted: {selectedPetType.Text}";
+                $"\nType of pet adopted: {selectedPetType.Text} \n";
             return adopteeInfo;
         }
         private void SaveToFile(string content)
