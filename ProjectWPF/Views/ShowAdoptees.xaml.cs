@@ -31,7 +31,10 @@ namespace ProjectWPF.Views
             List<Adoptee> adoptees = AdopteeDatabase.GetAdopteesInDatabase();
             TextBlock[] adopteeNameTextBlocks = {adoptee1Name, adoptee2Name, adoptee3Name, adoptee4Name};
             TextBlock[] adopteePetTextBlocks = { adoptee1Pets, adoptee2Pets, adoptee3Pets, adoptee4Pets };
-
+            if (adoptees.Count==0)
+            {
+                adopteeNameTextBlocks[0].Text = "No one has adopted a pet yet.";
+            }
             for (int i = 0; i < adoptees.Count && i < adopteeNameTextBlocks.Length; i++)
             {
                 adopteeNameTextBlocks[i].Text = $"{adoptees[i].Name}";

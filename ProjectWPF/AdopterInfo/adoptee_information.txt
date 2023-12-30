@@ -1,5 +1,1 @@
-hana,dkjdk,kjdkdj,9383,TODO,TODO,TODO,Bueno,Hamster 
-lili,ldjdkjd,jdhhdj,98393,TODO,TODO,TODO,Keywe,Bird 
-taryn,djdkj,kjdkd,87383,TODO,TODO,TODO,Slowy,Turtle 
-Lol,dkdj,idjjd,8938394,TODO,TODO,TODO,Coco,Dog 
-Hananana,kdjkd,odido,39933,TODO,TODO,TODO,Chichi,Hamster 
+hana,ksjss,kjksj,83783,TODO,TODO,TODO,Bueno,Hamster 

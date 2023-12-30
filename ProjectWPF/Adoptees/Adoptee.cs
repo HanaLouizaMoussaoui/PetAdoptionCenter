@@ -53,13 +53,14 @@ namespace ProjectWPF.Adoptees
         public string ID
         {
             get { return _id; }
+        }
         public void AddPetToAdoptee(Pet petToAdd)
         {
             _adoptedPets.Add(petToAdd);
         }
         private string GetId()
         {
-            string phoneNumberSubString = (_phoneNumber.ToString()).Substring(0, 5);
+            string phoneNumberSubString = (_phoneNumber.ToString()).Substring(0, 3);
             string id = $"{Name}{phoneNumberSubString}";
             return id;
         }

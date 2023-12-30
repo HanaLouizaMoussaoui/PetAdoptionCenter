@@ -14,8 +14,6 @@ namespace ProjectWPF.Repos
     internal static class AdopteeDatabase
     {
         private static List<Adoptee> adopteesInDatabase = new List<Adoptee> { };
-
-  
         private static List<Adoptee> RetrieveAdopteeDatabase()
         {
             List<Adoptee> adopteesInDB = new List<Adoptee> { };
@@ -32,16 +30,25 @@ namespace ProjectWPF.Repos
                         line = sr.ReadLine();
                         newAdoptee = GetAdopteeFromTextLine(line);
                         Pet adoptedPet = GetPetFromTextLine(line);
-                        newAdoptee.AddPetToAdoptee(adoptedPet);
-                        adopteesInDB.Add(newAdoptee);
+                        if (!CheckAdopteeAlreadyExist(newAdoptee, adoptedPet))
+                        {
+                            newAdoptee.AddPetToAdoptee(adoptedPet);
+                            adopteesInDB.Add(newAdoptee);
+                        }
                     }
+                    adopteesInDatabase = adopteesInDB;
+                    return adopteesInDB;
                 }
-                adopteesInDatabase = adopteesInDB;
-                return adopteesInDB;
+
             }
             else
-            { throw new Exception("womp womp"); };
+            {
+                throw new Exception();
+            }
+            
         }
+
+
         private static Adoptee GetAdopteeFromTextLine(string line)
         {
            
@@ -57,9 +64,9 @@ namespace ProjectWPF.Repos
                 Adoptee newAdoptee = new Adoptee(name, email, address, phoneNumber, residents,pets);
                 return newAdoptee;
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception();
+                Console.Write(e.ToString()); return null;
             }
         }
         private static Pet GetPetFromTextLine(string line)
@@ -87,19 +94,20 @@ namespace ProjectWPF.Repos
  
             return adopteesInDB;
         }
-        private static bool CheckAdopteeAlreadyExist(string adopteeInfo)
+        private static bool CheckAdopteeAlreadyExist(Adoptee newAdoptee, Pet adoptedPet)
         {
             bool alreadyExists = false;
-            string[] seperatedAdopteeInfo = adopteeInfo.Split(',');
-            string name = seperatedAdopteeInfo[0];
+            string id = newAdoptee.ID;
             foreach (Adoptee adoptee in adopteesInDatabase)
             {
-                if (adoptee.Name == name)
+                if (adoptee.ID == id)
                 {
                     alreadyExists = true;
+                    adoptee.AddPetToAdoptee(adoptedPet);
                 }
             }
             return alreadyExists;
         }
     }
+
 }
