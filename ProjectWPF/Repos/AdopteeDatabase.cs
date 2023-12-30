@@ -61,9 +61,10 @@ namespace ProjectWPF.Repos
                     while (!sr.EndOfStream)
                     {
                         line = sr.ReadLine();
-
-                            newAdoptee = GetAdopteeFromTextLine(line);
-                            adopteesInDB.Add(newAdoptee);
+                        newAdoptee = GetAdopteeFromTextLine(line);
+                        Pet adoptedPet = GetPetFromTextLine(line);
+                        newAdoptee.AddPetToAdoptee(adoptedPet);
+                        adopteesInDB.Add(newAdoptee);
                     }
                 }
                 return adopteesInDB;
@@ -85,6 +86,23 @@ namespace ProjectWPF.Repos
                 int pets = 0; // TEMP 
                 Adoptee newAdoptee = new Adoptee(name, email, address, phoneNumber, residents,pets);
                 return newAdoptee;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+        private static Pet GetPetFromTextLine(string line)
+        {
+            string[] seperatedAdopteeInfo = line.Split(',');
+            try
+            {
+                string petName = seperatedAdopteeInfo[7];
+                foreach (Pet pet in PetDatabase.GetPetsInDatabase())
+                {
+                    if (pet.Name==petName) return pet;
+                }
+                return null;
             }
             catch
             {

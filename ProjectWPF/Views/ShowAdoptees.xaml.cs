@@ -29,11 +29,13 @@ namespace ProjectWPF.Views
         private void DisplayAdoptees()
         {
             List<Adoptee> adoptees = AdopteeDatabase.GetAdopteesInDatabase();
-            TextBlock[] adopteeTextBlocks = {adoptee1Name, adoptee2Name, adoptee3Name, adoptee4Name};
+            TextBlock[] adopteeNameTextBlocks = {adoptee1Name, adoptee2Name, adoptee3Name, adoptee4Name};
+            TextBlock[] adopteePetTextBlocks = { adoptee1Pets, adoptee2Pets, adoptee3Pets, adoptee4Pets };
 
-            for (int i = 0; i < adoptees.Count && i < adopteeTextBlocks.Length; i++)
+            for (int i = 0; i < adoptees.Count && i < adopteeNameTextBlocks.Length; i++)
             {
-                adopteeTextBlocks[i].Text = $"{adoptees[i].Name}";
+                adopteeNameTextBlocks[i].Text = $"{adoptees[i].Name}";
+                adopteePetTextBlocks[i].Text= $"Adopted {adoptees[i].AdoptedPet[0].Name}"; // For now, only showing one pet they adopted
             }
 
         }
