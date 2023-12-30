@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectWPF.Repos;
+using ProjectWPF.Adoptees;
 
 namespace ProjectWPF.Views
 {
@@ -22,6 +24,17 @@ namespace ProjectWPF.Views
         public ShowAdoptees()
         {
             InitializeComponent();
+            DisplayAdoptees();
+        }
+        private void DisplayAdoptees()
+        {
+            List<Adoptee> adoptees = AdopteeDatabase.FetchAdoptees();
+            switch (adoptees.Count)
+            {
+                case 1:
+                    adoptee1Name.Text = adoptees[0].Name; break;
+            }
         }
     }
+    
 }

@@ -118,5 +118,15 @@ namespace ProjectWPF
             pet4photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.png", UriKind.Relative));
             pet4Name.Text = petsToShow[3].Name;
         }
+        private void Button_Click_Show_Adoptees(object sender, RoutedEventArgs e)
+        {
+            ShowAdoptees();
+        }
+        private void ShowAdoptees()
+        {
+            ShowAdoptees adoptees = new ShowAdoptees();
+            adoptees.Show();
+            this.Close();
+        }
     }
 }

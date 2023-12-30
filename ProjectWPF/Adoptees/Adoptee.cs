@@ -26,6 +26,10 @@ namespace ProjectWPF.Adoptees
             _petsInHome = pets;
             _adoptedPets = new List<Pet>();
         }
+        public string Name
+        {
+            get { return _name; }
+        }
         public void AddPetToAdoptee(Pet petToAdd)
         {
             _adoptedPets.Add(petToAdd);

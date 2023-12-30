@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace ProjectWPF.Repos
 {
-    internal class AdopteeDatabase
+    internal static class AdopteeDatabase
     {
         private static List<Adoptee> adopteesInDatabase;
 
@@ -33,6 +33,8 @@ namespace ProjectWPF.Repos
                 }
 
             }
+            else
+            { throw new Exception("womp womp"); };
             return adopteesInDatabase;
         }
         private static Adoptee GetAdopteeFromTextLine(string line, Pet adoptedPet, string adopteeInfo)
@@ -62,6 +64,10 @@ namespace ProjectWPF.Repos
         public static List<Adoptee> GetAdopteesInDatabase(Pet adoptedPet,string adopteeInfo)
         {
             adopteesInDatabase = RetrieveAdopteeDatabase(adoptedPet,adopteeInfo);
+            return adopteesInDatabase;
+        }
+        public static List<Adoptee> FetchAdoptees()
+        {
             return adopteesInDatabase;
         }
     }
