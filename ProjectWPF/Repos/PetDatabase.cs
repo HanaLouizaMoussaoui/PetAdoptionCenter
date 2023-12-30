@@ -42,13 +42,20 @@ namespace ProjectWPF.Repos
         private static Pet GetPetFromTextLine(string line)
         {
             string[] seperatedPetInfo = line.Split(',');
-            string name = seperatedPetInfo[0];
-            int age = int.Parse(seperatedPetInfo[1]);
-            bool isAdopted= bool.Parse(seperatedPetInfo[2]);
-            string type = seperatedPetInfo[3];
-            string description = seperatedPetInfo[4];
-            Pet newPet = new Pet(name, age, isAdopted, type, description);
-            return newPet;
+            try
+            {
+                string name = seperatedPetInfo[0];
+                int age = int.Parse(seperatedPetInfo[1]);
+                bool isAdopted = bool.Parse(seperatedPetInfo[2]);
+                string type = seperatedPetInfo[3];
+                string description = seperatedPetInfo[4];
+                Pet newPet = new Pet(name, age, isAdopted, type, description);
+                return newPet;
+            }
+            catch
+            {
+                throw new Exception($"{seperatedPetInfo[0]},{seperatedPetInfo[1]},{seperatedPetInfo[2]}");
+            }
         }
         public static Pet[] GetPetsInDatabase()
         {

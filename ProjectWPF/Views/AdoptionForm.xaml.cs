@@ -43,11 +43,14 @@ namespace ProjectWPF.Views
         }
         public void BtnClick_SubmittedAdoptionForm(object sender, RoutedEventArgs e)
         {
+            string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
             _selectedPet = PetDatabase.GetPetsInDatabase()[_petIndex];
-            if (_selectedPet.IsAdopted == false) 
-            {
-                _selectedPet.IsAdopted = true;
-            }
+            int lineIndexToChange = _petIndex;
+            string newTextForLine = $"{_selectedPet.Name},{_selectedPet.Age},true,{_selectedPet.Type},{_selectedPet.Description}";
+            string[] lines = File.ReadAllLines(filePath);
+            lines[lineIndexToChange] = newTextForLine;
+            File.WriteAllLines(filePath, lines);
+            _selectedPet.IsAdopted = true;
             string adopteeData = GetAdopteeData();
             SaveToFile(adopteeData);
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();

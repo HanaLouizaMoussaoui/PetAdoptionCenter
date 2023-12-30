@@ -1,0 +1,55 @@
+Name:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Speedy
+Type of pet adopted: HamsterName:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Kelp
+Type of pet adopted: Sea TurtleName:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Slowy
+Type of pet adopted: TurtleName:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Coco
+Type of pet adopted: DogName:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Bueno
+Type of pet adopted: HamsterName:  
+Email: 
+Address: 
+Phone Number: 
+Phone Type: 
+Home Type: TODO
+Permanent residents in home: TODO
+Number of pets: TODO
+Name of pet adopted: Carrot
+Type of pet adopted: Dog
