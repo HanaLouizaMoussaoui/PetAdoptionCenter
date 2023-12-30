@@ -63,15 +63,15 @@
                     <RadioButton Content="Apartment"></RadioButton>                    
                 </StackPanel>
 
-                <Label Content="Permanent residents in your home (including the adopter)" Margin="0,10,0,0"/>
+                <Label Content="Permanent residents in your home (including the adoptee)" Margin="0,10,0,0"/>
                 <StackPanel>
-                    <RadioButton Content="1 or 2"></RadioButton>
-                    <RadioButton Content="3 or more"></RadioButton>                    
+                    <RadioButton Content="1-2"></RadioButton>
+                    <RadioButton Content="3+"></RadioButton>                    
                 </StackPanel>
                 <Label Content="Pets living in the home" Margin="0,10,0,0"/>
                 <StackPanel>
-                    <RadioButton Content="1 or 2"></RadioButton>
-                    <RadioButton Content="3 or more"></RadioButton>                    
+                    <RadioButton Content="0-2"></RadioButton>
+                    <RadioButton Content="3+"></RadioButton>                    
                 </StackPanel>
             </StackPanel>
         </GroupBox>

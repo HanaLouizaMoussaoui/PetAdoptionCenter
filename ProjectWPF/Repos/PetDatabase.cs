@@ -12,13 +12,14 @@ namespace ProjectWPF.Repos
     internal static class PetDatabase
     {
         private static Pet[] petsInDatabase;
+        private const int NUMBER_OF_PETS_IN_DB = 11;
         static PetDatabase()
         {
             petsInDatabase = RetrievePetDatabase();
         }
         private static Pet[] RetrievePetDatabase()
         {
-            Pet[] petsInDB = new Pet[11];
+            Pet[] petsInDB = new Pet[NUMBER_OF_PETS_IN_DB];
             int arrayCounter = 0;
             StringBuilder sb = new StringBuilder();
             string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
