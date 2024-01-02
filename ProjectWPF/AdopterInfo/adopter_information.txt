@@ -1,4 +1,5 @@
-hana,hana@email.com,99 street,514-123-4567,House,1-2,0-2,Coco,Dog
-hana,hana@email.com,99 street,514-123-4567,House,1-2,0-2,Keywe,Bird 
-taryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Plumpo,Dog
+hana,hana@email.com,99 street,5141234567,House,1-2,0-2,Coco,Dog
+hana,hana@email.com,99 street,5141234567,House,1-2,0-2,Chichi,Hamster 
+taryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Plumpo,Bird
+taryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Smokey,Dragon
 bob,bob@email.com,67 street,5144445555,Apartment,1-2,0-2,Bueno,Hamster

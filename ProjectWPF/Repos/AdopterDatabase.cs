@@ -18,7 +18,7 @@ namespace ProjectWPF.Repos
             List<Adopter> adoptersInDB = new List<Adopter> { };
 
             // Path to our adoptee file
-            string filePath = "..\\..\\..\\AdopterInfo\\adopter_information.txt";
+            string filePath = ".\\adopter_information.txt";
 
             if (File.Exists(filePath))
             {

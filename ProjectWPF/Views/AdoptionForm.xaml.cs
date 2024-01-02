@@ -54,7 +54,7 @@ namespace ProjectWPF.Views
             SaveToFile(adopterData);
 
             // Getting the pet database
-            string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
+            string filePath = ".\\PetDatabaseTextFile.txt";
           
             // Updating the pet adopted status from false to true in the file database
             int lineIndexToChange = _petIndex;
@@ -102,7 +102,7 @@ namespace ProjectWPF.Views
         }
         private void SaveToFile(string content)
         {
-            string filePath = "..\\..\\..\\AdopterInfo\\adopter_information.txt";
+            string filePath = ".\\adopter_information.txt";
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))

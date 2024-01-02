@@ -8,7 +8,7 @@ namespace ProjectWPF.Repos
     internal static class PetDatabase
     {
         //private static Pet[] petsInDatabase;
-        private const int NUMBER_OF_PETS_IN_DB = 11;
+        private const int NUMBER_OF_PETS_IN_DB = 12;
         public static Pet[] PetsInDatabase
         {
             get
@@ -16,7 +16,7 @@ namespace ProjectWPF.Repos
                 Pet[] petsInDB = new Pet[NUMBER_OF_PETS_IN_DB];
                 int arrayCounter = 0;
                 StringBuilder sb = new StringBuilder();
-                string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
+                string filePath = ".\\PetDatabaseTextFile.txt";
                 if (File.Exists(filePath))
                 {
                     using (StreamReader sr = new StreamReader(filePath))
@@ -52,10 +52,5 @@ namespace ProjectWPF.Repos
                 throw new Exception($"{seperatedPetInfo[0]},{seperatedPetInfo[1]},{seperatedPetInfo[2]}");
             }
         }
-        //public static Pet[] GetPetsInDatabase()
-        //{
-        //    petsInDatabase = RetrievePetDatabase();
-        //    return petsInDatabase;
-        //}
     }
 }

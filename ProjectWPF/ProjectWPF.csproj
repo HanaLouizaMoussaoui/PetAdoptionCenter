@@ -23,6 +23,7 @@
     <None Remove="Images\Plumpo.png" />
     <None Remove="Images\Slowy.jpg" />
     <None Remove="Images\Slowy.png" />
+    <None Remove="Images\Smokey.png" />
     <None Remove="Images\Speedy.jpg" />
     <None Remove="Images\Speedy.png" />
   </ItemGroup>
@@ -42,6 +43,7 @@
     <Resource Include="Images\Keywe.png" />
     <Resource Include="Images\Plumpo.png" />
     <Resource Include="Images\Slowy.png" />
+    <Resource Include="Images\Smokey.png" />
     <Resource Include="Images\Speedy.png" />
   </ItemGroup>
 

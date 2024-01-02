@@ -23,7 +23,7 @@ namespace ProjectWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const int MAX_PETS = 11;
+        private const int MAX_PETS = 12;
         //note the 50 here is a placeholder
         private int[] alreadyGeneratedPets = new int[4] { 50, 50, 50, 50 };
         private int[] previousGeneratedPets = new int[4];
