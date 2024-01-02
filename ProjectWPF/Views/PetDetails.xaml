@@ -30,15 +30,15 @@
             </Grid.RowDefinitions>
             <Image Grid.RowSpan="5" Grid.Column="0" Margin="15" x:Name="selectedPetPhoto"/>
             <Label Content="Name" Foreground="#FFADE0BB" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="0" Grid.Column="3"  Margin="15" x:Name="selectedPetName" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="3"  Margin="15" x:Name="selectedPetName" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Type" Foreground="#FFADE0BB" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="1" Grid.Column="2"  Margin="15" x:Name="selectedPetType" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="2"  Margin="15" x:Name="selectedPetType" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Adoption Status" Foreground="#FFADE0BB" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="2" Grid.Column="2"  Margin="15" x:Name="selectedPetIsAdopted" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="2"  Margin="15" x:Name="selectedPetIsAdopted" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Age" Foreground="#FFADE0BB" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="3" Grid.Column="2"  Margin="15" x:Name="selectedPetAge" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Grid.Column="2"  Margin="15" x:Name="selectedPetAge" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Description" Foreground="#FFADE0BB" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="4" Grid.Column="2"  Margin="15" x:Name="selectedPetDescription" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="2"  Margin="15" x:Name="selectedPetDescription" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Button Grid.Row="5" Grid.Column="2" Content="Adopt" Width="100px" FontSize="25" x:Name="adopt" Foreground="Black" BorderBrush="White" Background="#FFADE0BB" Click="BtnClick__GoToAdoptPetPage"/>
             <Button Grid.Row="6" Grid.Column="0" Content="Go Back" Width="90px" FontSize="20" x:Name="goBack" Click="BtnClick_GoBackMain" BorderBrush="White"/>
 
