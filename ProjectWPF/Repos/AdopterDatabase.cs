@@ -54,7 +54,7 @@ namespace ProjectWPF.Repos
             string name = seperatedAdopterInfo[0];
             string email = seperatedAdopterInfo[1];
             string address = seperatedAdopterInfo[2];
-            long phoneNumber = long.Parse(seperatedAdopterInfo[3]);
+            string phoneNumber = seperatedAdopterInfo[3];
             string residents = seperatedAdopterInfo[4];
             string pets = seperatedAdopterInfo[5]; // TEMP 
             Adopter newAdopter = new Adopter(name, email, address, phoneNumber, residents, pets);

@@ -86,9 +86,10 @@ namespace ProjectWPF.Views
                 home = "House";
             else
                 home = "Apartment";
-
-            Adopter adopter = new Adopter(txbName.Text, txbEmail.Text, txbAddress.Text, txbPhone.Text, home, residents, pets, selectedPetName.Text, selectedPetType);
-            string adopterInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
+            string phoneNumber = txbPhone.Text.Replace("-", "");
+            Adopter adopter = new Adopter(txbName.Text, txbEmail.Text, txbAddress.Text, phoneNumber, home, residents, pets, selectedPetName.Text, selectedPetType.Text);
+            // string adopterInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
+            string adopterInfo = adopter.ToString();
             return adopterInfo;
         }
         private void SaveToFile(string content)

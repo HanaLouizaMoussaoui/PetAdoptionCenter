@@ -1,5 +1,3 @@
-hana,hana@email.com,99 street,514-123-4567,TODO,TODO,TODO,Plumpo,Bird 
-hana,hana@email.com,99 street,514-123-4567,TODO,TODO,TODO,Kelp,Sea Turtle 
-taryn,taryn@email.com,80 avenue,514-345-6789,TODO,TODO,TODO,Speedy,Hamster 
-jeff,jeff@email.com,23 street,514-098-7654,TODO,TODO,TODO,Buddy,Dog 
-jeff,jeff@email.com,23 street,514-098-7654,TODO,TODO,TODO,Chichi,Hamster
+hana,hana@email.com,99 street,514-123-4567,House,1-2,0-2,Plumpo,Bird 
+taryn,taryn@email.com,80 avenue,514-345-6789,Apartment,1-2,3+,Speedy,Hamster 
+jeff,jeff@email.com,23 street,514-098-7654,House,1-2,0-2,Buddy,Dog 
