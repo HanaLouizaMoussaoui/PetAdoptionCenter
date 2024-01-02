@@ -81,7 +81,7 @@ namespace ProjectWPF
                 {
                     randomPet = randomPetSelector.Next(0, MAX_PETS);
                 }
-                pets[i] = PetDatabase.GetPetsInDatabase()[randomPet];
+                pets[i] = PetDatabase.PetsInDatabase[randomPet];
                 alreadyGeneratedPets[i] = randomPet;
             }
             return pets;
@@ -92,7 +92,7 @@ namespace ProjectWPF
             for (int i = 0; i < pets.Length; i++)
             {
                 int petIndex = petsToGenerate[i];
-                pets[i] = PetDatabase.GetPetsInDatabase()[petIndex];
+                pets[i] = PetDatabase.PetsInDatabase[petIndex];
             }
             return pets;
         }
@@ -118,15 +118,12 @@ namespace ProjectWPF
             pet4photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.png", UriKind.Relative));
             pet4Name.Text = petsToShow[3].Name;
         }
-        private void Button_Click_Show_Adoptees(object sender, RoutedEventArgs e)
-        {
-            ShowAdoptees();
-        }
-        private void ShowAdoptees()
-        {
+        private void Btn_Click_Show_Adopters(object sender, RoutedEventArgs e)
+        {    
             ShowAdopters adoptees = new ShowAdopters();
             adoptees.Show();
             this.Close();
         }
+  
     }
 }

@@ -1,11 +1,11 @@
 Coco,4,true,Dog,A cute white and grey dog
-Buddy,7,true,Dog,A friendly brown dog
-Chichi,1,true,Hamster,A speedy little hamster
-Slowy,15,true,Turtle,A majestic turtle
+Buddy,7,false,Dog,A friendly brown dog
+Chichi,1,false,Hamster,A speedy little hamster
+Slowy,15,false,Turtle,A majestic turtle
 Bueno,2,true,Hamster,A cute hamster that loves treats
-Kelp,10,true,Sea Turtle,An elegant sea turtle
-Charlotte,1,true,Dog,A playful puppy
-Carrot,7,true,Dog,A cute and endearing puppy
-Speedy,1,true,Hamster,A very fast and active hamster
+Kelp,10,false,Sea Turtle,An elegant sea turtle
+Charlotte,1,false,Dog,A playful puppy
+Carrot,7,false,Dog,A cute and endearing puppy
+Speedy,1,false,Hamster,A very fast and active hamster
 Keywe,2,true,Bird,A kiwi bird that is guaranteed to sweeten your day
 Plumpo,4,true,Bird,A cockatiel with minimal thoughts

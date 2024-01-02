@@ -20,6 +20,7 @@ using ProjectWPF.Views;
 using System.IO;
 using System.Printing;
 using ProjectWPF.Adopters;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProjectWPF.Views
 {
@@ -69,7 +70,7 @@ namespace ProjectWPF.Views
             popup.Show();
             Close();
         }
-        public void BtnClick_GoBackMain(object sender, RoutedEventArgs e) //repeated method, could make this more modular
+        public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
         {
             MainWindow newMain = new MainWindow();
             newMain.Show();
@@ -79,16 +80,24 @@ namespace ProjectWPF.Views
 
         private string GetAdopterData()
         {
-            string home = "";
-            string residents = "";
-            string pets = "";
+            string home;
+            string residents;
+            string pets;
             if (radioBtnHouse.IsChecked == true)
                 home = "House";
             else
                 home = "Apartment";
+            if (radioBtnResidents1_2.IsChecked == true)
+                residents = "1-2";
+            else
+                residents = "3+";
+            if (radioBtnPets0_2.IsChecked == true)
+                pets = "0-2";
+            else
+                pets = "3+";
             string phoneNumber = txbPhone.Text.Replace("-", "");
-            Adopter adopter = new Adopter(txbName.Text, txbEmail.Text, txbAddress.Text, phoneNumber, home, residents, pets, selectedPetName.Text, selectedPetType.Text);
-            string adopterInfo = adopter.ToString();
+            Adopter adopter = new Adopter(txbName.Text, txbAddress.Text, txbEmail.Text, phoneNumber, home, residents, pets);
+            string adopterInfo = $"\n{adopter.ToString()},{selectedPetName.Text},{selectedPetType.Text}";
             return adopterInfo;
         }
         private void SaveToFile(string content)

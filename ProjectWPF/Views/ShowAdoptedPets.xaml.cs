@@ -33,5 +33,11 @@ namespace ProjectWPF.Views
             // Assign the list of adopted pets to the AdoptedPets property. We need to do this to display an updated list of all adopted pets
              AdoptedPets = PetDatabase.PetsInDatabase.Where(pet => pet.IsAdopted).ToArray();
         }
+        public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

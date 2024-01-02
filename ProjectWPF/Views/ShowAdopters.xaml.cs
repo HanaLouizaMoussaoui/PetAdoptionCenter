@@ -1,6 +1,7 @@
 ﻿using ProjectWPF.Adopters;
 using ProjectWPF.Repos;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,8 +24,8 @@ namespace ProjectWPF.Views
             List<Adopter> adopters = AdopterDatabase.RetrieveAdopterDatabase();
 
             // Fetching our textblocks from the window 
-            TextBlock[] adopterNameTextBlocks = { adoptee1Name, adoptee2Name, adoptee3Name, adoptee4Name };
-            TextBlock[] adopterPetTextBlocks = { adoptee1Pets, adoptee2Pets, adoptee3Pets, adoptee4Pets };
+            TextBlock[] adopterNameTextBlocks = { txbAdopter1Name, txbAdopter2Name, txbAdopter3Name, txbAdopter4Name };
+            TextBlock[] adopterPetTextBlocks = { txbAdopter1Pets, txbAdopter2Pets, txbAdopter3Pets, txbAdopter4Pets };
 
             // If there are no adopters we show a message
             if (adopters.Count == 0)
@@ -47,12 +48,14 @@ namespace ProjectWPF.Views
                     // If this adopter has adopted more than one pet, we append the other pet names
                     for (int j = 1; j < adopters[i].AdoptedPets.Count; j++)
                     {
-                        sb.Append($"and ");
+                        sb.Append($" and ");
                         string petName = adopters[i].AdoptedPets[j].Name;
                         sb.Append($"{petName} ");
                     }
+                    Trace.WriteLine("name 3:" + adopterNameTextBlocks[i].Text);
                     // Displaying the adopter's pet(s)
                     adopterPetTextBlocks[i].Text = sb.ToString();
+                    Trace.WriteLine("name 4:" + adopterNameTextBlocks[i].Text);
                 }
             }
             // Going through each adopter

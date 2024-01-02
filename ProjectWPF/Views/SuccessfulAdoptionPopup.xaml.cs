@@ -36,7 +36,7 @@ namespace ProjectWPF.Views
 
         public SuccessfulAdoptionPopup(int petIndex) : this()
         {
-            _selectedPet = PetDatabase.GetPetsInDatabase()[petIndex];
+            _selectedPet = PetDatabase.PetsInDatabase[petIndex];
             selectedPetName.Text = _selectedPet.Name;
         }
         public void BtnClick_ClosePopup(object sender, RoutedEventArgs e)

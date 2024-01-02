@@ -2,6 +2,7 @@
 using ProjectWPF.Pets;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -52,12 +53,13 @@ namespace ProjectWPF.Repos
         {
             string[] seperatedAdopterInfo = line.Split(',');
             string name = seperatedAdopterInfo[0];
-            string email = seperatedAdopterInfo[1];
-            string address = seperatedAdopterInfo[2];
+            string address = seperatedAdopterInfo[1];
+            string email = seperatedAdopterInfo[2];
             string phoneNumber = seperatedAdopterInfo[3];
-            string residents = seperatedAdopterInfo[4];
-            string pets = seperatedAdopterInfo[5]; // TEMP 
-            Adopter newAdopter = new Adopter(name, email, address, phoneNumber, residents, pets);
+            string home = seperatedAdopterInfo[4];
+            string residents = seperatedAdopterInfo[5];
+            string pets = seperatedAdopterInfo[6];
+            Adopter newAdopter = new Adopter(name, address, email, phoneNumber, home, residents, pets);
             return newAdopter;
 
         }

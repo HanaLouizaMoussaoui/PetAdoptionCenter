@@ -44,7 +44,7 @@ namespace ProjectWPF.Adopters
             _adoptedPets = new List<Pet> { };
         }
 
-        public Adopter(string name, string email, string address, string phone, string homeType, string residents, string pets, string petName, string petType)
+        public Adopter(string name, string email, string address, string phone, string homeType, string residents, string pets)
         {
             _name = name;
             _email = email;
@@ -130,7 +130,7 @@ namespace ProjectWPF.Adopters
         }
         public override string ToString()
         {
-            return $"{Name},{Email},{Address},{PhoneNumber},{HomeType},{Residents},{PetsInHome}";
+            return $"{Name},{Address},{Email},{PhoneNumber},{HomeType},{Residents},{PetsInHome}";
         }
         #endregion
     }

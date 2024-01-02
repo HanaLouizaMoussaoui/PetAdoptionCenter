@@ -30,7 +30,7 @@ namespace ProjectWPF.Views
         {
             currentAlreadyGeneratedPets = alreadyGeneratedPets;
             currentPetIndex = petIndex; // Saving the pet index in a global variable so we can pass it later
-            _selectedPet = PetDatabase.GetPetsInDatabase()[petIndex];
+            _selectedPet = PetDatabase.PetsInDatabase[petIndex];
             selectedPetPhoto.Source = new BitmapImage(new Uri($"/Images/{_selectedPet.Name}.png", UriKind.Relative));
             selectedPetName.Text = _selectedPet.Name;
             selectedPetAge.Text = $"{_selectedPet.Age} years old";
@@ -52,7 +52,7 @@ namespace ProjectWPF.Views
         
         public void BtnClick__GoToAdoptPetPage(object sender, RoutedEventArgs e)
         {
-            if (PetDatabase.GetPetsInDatabase()[currentPetIndex].IsAdopted)
+            if (PetDatabase.PetsInDatabase[currentPetIndex].IsAdopted)
             {
                 NotAvailableAdoptionPopUp notAdoptable = new NotAvailableAdoptionPopUp();
                 notAdoptable.Show();
