@@ -1,43 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProjectWPF.Pets;
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using ProjectWPF.Pets;
 
 namespace ProjectWPF.Repos
 {
     internal static class PetDatabase
     {
-        private static Pet[] petsInDatabase;
+        //private static Pet[] petsInDatabase;
         private const int NUMBER_OF_PETS_IN_DB = 11;
-        static PetDatabase()
+        public static Pet[] PetsInDatabase
         {
-            petsInDatabase = RetrievePetDatabase();
-        }
-        private static Pet[] RetrievePetDatabase()
-        {
-            Pet[] petsInDB = new Pet[NUMBER_OF_PETS_IN_DB];
-            int arrayCounter = 0;
-            StringBuilder sb = new StringBuilder();
-            string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
-            if (File.Exists(filePath))
+            get
             {
-                using (StreamReader sr = new StreamReader(filePath))
+                Pet[] petsInDB = new Pet[NUMBER_OF_PETS_IN_DB];
+                int arrayCounter = 0;
+                StringBuilder sb = new StringBuilder();
+                string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
+                if (File.Exists(filePath))
                 {
-                    string line;
-                    while (!sr.EndOfStream)
+                    using (StreamReader sr = new StreamReader(filePath))
                     {
-                        line = sr.ReadLine();
-                        petsInDB[arrayCounter] = GetPetFromTextLine(line);
-                        arrayCounter++;
+                        string line;
+                        while (!sr.EndOfStream)
+                        {
+                            line = sr.ReadLine();
+                            petsInDB[arrayCounter] = GetPetFromTextLine(line);
+                            arrayCounter++;
+                        }
                     }
                 }
-               
+                return petsInDB;
             }
-            return petsInDB;
 
         }
         private static Pet GetPetFromTextLine(string line)
@@ -58,10 +52,10 @@ namespace ProjectWPF.Repos
                 throw new Exception($"{seperatedPetInfo[0]},{seperatedPetInfo[1]},{seperatedPetInfo[2]}");
             }
         }
-        public static Pet[] GetPetsInDatabase()
-        {
-            petsInDatabase = RetrievePetDatabase();
-            return petsInDatabase;
-        }
+        //public static Pet[] GetPetsInDatabase()
+        //{
+        //    petsInDatabase = RetrievePetDatabase();
+        //    return petsInDatabase;
+        //}
     }
 }

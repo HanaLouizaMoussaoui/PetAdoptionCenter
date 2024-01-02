@@ -66,7 +66,7 @@ namespace ProjectWPF.Repos
             string[] seperatedAdopterInfo = line.Split(',');
 
             string petName = seperatedAdopterInfo[7];
-            foreach (Pet pet in PetDatabase.GetPetsInDatabase())
+            foreach (Pet pet in PetDatabase.PetsInDatabase)
             {
                 if (pet.Name == petName) return pet; // Finding the pet  in the database with this name
             }

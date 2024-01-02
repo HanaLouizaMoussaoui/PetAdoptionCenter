@@ -38,14 +38,14 @@ namespace ProjectWPF.Views
         public AdoptionForm(int petIndex) : this()
         {
             _petIndex = petIndex;
-            _selectedPet = PetDatabase.GetPetsInDatabase()[petIndex];
+            _selectedPet = PetDatabase.PetsInDatabase[petIndex];
             selectedPetName.Text = _selectedPet.Name;
             selectedPetType.Text = _selectedPet.Type;
         }
         public void BtnClick_SubmittedAdoptionForm(object sender, RoutedEventArgs e)
         {
             // Fetching the pet that's being adopted
-            _selectedPet = PetDatabase.GetPetsInDatabase()[_petIndex];
+            _selectedPet = PetDatabase.PetsInDatabase[_petIndex];
 
             // Getting the adoptee data from the user info
             string adopterData = GetAdopterData();
@@ -63,7 +63,7 @@ namespace ProjectWPF.Views
             File.WriteAllLines(filePath, lines);
 
             // Updating the pet database
-            PetDatabase.GetPetsInDatabase();
+            //PetDatabase.PetsInDatabase;
 
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();
             popup.Show();
@@ -88,7 +88,6 @@ namespace ProjectWPF.Views
                 home = "Apartment";
             string phoneNumber = txbPhone.Text.Replace("-", "");
             Adopter adopter = new Adopter(txbName.Text, txbEmail.Text, txbAddress.Text, phoneNumber, home, residents, pets, selectedPetName.Text, selectedPetType.Text);
-            // string adopterInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
             string adopterInfo = adopter.ToString();
             return adopterInfo;
         }

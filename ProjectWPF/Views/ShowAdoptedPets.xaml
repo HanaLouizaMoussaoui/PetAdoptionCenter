@@ -1,0 +1,42 @@
+﻿<Window x:Class="ProjectWPF.Views.ShowAdoptedPets"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectWPF.Views"
+        mc:Ignorable="d"
+        Title="ShowAdoptedPets" Height="450" Width="800">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2" Grid.Column="0" >
+            <TextBlock Text="Our adopted pets!" TextAlignment="Center" FontSize="30" Foreground="#FFADE0BB" Margin="0,10,0,0"></TextBlock>
+            <TextBlock Text="These pets have all been adopted! " TextAlignment="Center" FontSize="15" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="10">
+            <TextBlock x:Name="pet1Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="380px" Margin="0,80,0,0" FontSize="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10">
+            <TextBlock x:Name="adoptee2Name" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,80,0,0" Width="200px" FontSize="25"/>
+            <TextBlock x:Name="adoptee2Pets" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" Width="400px" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
+            <TextBlock x:Name="adoptee3Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="200px" FontSize="25"/>
+            <TextBlock x:Name="adoptee3Pets" HorizontalAlignment="Center" TextAlignment="Center"   Width="400px" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
+            <TextBlock x:Name="adoptee4Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="200px" FontSize="25"/>
+            <TextBlock x:Name="adoptee4Pets" HorizontalAlignment="Center" TextAlignment="Center"  Width="400px"  FontSize="20"/>
+        </StackPanel>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Go Back"  Width="90px" FontSize="20" Height="30" x:Name="goBack"  Click="BtnClick_GoBackMain"/>
+    </Grid>
+</Window>
