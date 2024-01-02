@@ -15,6 +15,6 @@
             <Run Text="This pet is not available for adoption "/>
             <Run Text="" x:Name="selectedPetName"/>
         </TextBlock>
-        <Button Click="BtnClick_ClosePopup" Height="20px" Width="40px" Content="Close" Margin="10"/>
+        <Button Click="BtnClick_ClosePopup" Height="20px" Width="70px" Content="Close" Margin="10"/>
     </StackPanel>
 </Window>

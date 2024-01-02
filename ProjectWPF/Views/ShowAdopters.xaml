@@ -5,41 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectWPF.Views"
         mc:Ignorable="d"
-        Title="ShowAdopters" Height="470" Width="800">
-    
+        Title="ShowAdopters" Height="800" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-      
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0.166"/>
+                <GradientStop Color="#FFFFDBC8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.ColumnSpan="2" Grid.Column="0" >
-            <TextBlock Text="Our adopters!" TextAlignment="Center" FontSize="30" Foreground="#FFADE0BB" Margin="0,10,0,0"></TextBlock>
-            <TextBlock Text="These are just a few of the many people who rescued pets from our center. Be the next one! " TextAlignment="Center" FontSize="15" ></TextBlock>
+            <TextBlock Text="Our adopters!" FontFamily="Bauhaus 93" TextAlignment="Center" FontSize="30" Foreground="#FFADE0BB" Margin="0,10,0,0"></TextBlock>
+            <TextBlock Text="These are just a few of the many people who rescued pets from our center. Be the next one! " TextAlignment="Center" FontSize="17" Margin="0, 20, 0, 0"></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="txbAdopter1Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="380px" Margin="0,80,0,0" FontSize="25"/>
-            <TextBlock x:Name="txbAdopter1Pets" HorizontalAlignment="Center" TextAlignment="Center"  Width="400px" Margin="0,5,0,0" FontSize="20"/>
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="txbAdopter2Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="380px" Margin="0,80,0,0" FontSize="25"/>
-            <TextBlock x:Name="txbAdopter2Pets" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" Width="400px" FontSize="20"/>
-        </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="txbAdopter3Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="200px" FontSize="25"/>
-            <TextBlock x:Name="txbAdopter3Pets" HorizontalAlignment="Center" TextAlignment="Center"   Width="400px" FontSize="20"/>
+            <TextBlock x:Name="txbAdopter1Name" Foreground="#FFADE0BB" TextAlignment="Center" FontSize="35" Margin="0,25,0,0"/>
+            <TextBlock x:Name="txbAdopter1Pets" HorizontalAlignment="Center" TextAlignment="Center"  Width="380px" Margin="0,5,0,0" FontSize="25"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="txbAdopter4Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="200px" FontSize="25"/>
-            <TextBlock x:Name="txbAdopter4Pets" HorizontalAlignment="Center" TextAlignment="Center"  Width="400px"  FontSize="20"/>
+            <TextBlock x:Name="txbAdopter2Name" Foreground="#FFADE0BB" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,25,0,0" FontSize="35"/>
+            <TextBlock x:Name="txbAdopter2Pets" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" FontSize="25"/>
         </StackPanel>
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Go Back"  Width="90px" FontSize="20" Height="30" x:Name="goBack"  Click="BtnClick_GoBackMain"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" Margin="10">
+            <TextBlock x:Name="txbAdopter3Name" Foreground="#FFADE0BB" HorizontalAlignment="Center" TextAlignment="Center"  Margin="0,25,0,0" FontSize="35"/>
+            <TextBlock x:Name="txbAdopter3Pets" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" Margin="10">
+            <TextBlock x:Name="txbAdopter4Name" Foreground="#FFADE0BB" HorizontalAlignment="Center" TextAlignment="Center"  Margin="0,25,0,0" FontSize="35"/>
+            <TextBlock x:Name="txbAdopter4Pets" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"/>
+        </StackPanel>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Foreground="Black" BorderBrush="White" Content="Go Back"  Width="90px" FontSize="20" Height="30" x:Name="goBack"  Click="BtnClick_GoBackMain"/>
 
 
     </Grid>

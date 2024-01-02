@@ -99,6 +99,8 @@ namespace ProjectWPF
         private void ShowPets()
         {
             seePetsButton.Content = "Refresh to see more pets!";
+            seeAvailablePetsButton.Visibility = Visibility.Visible;
+            seeAdoptedPetsButton.Visibility = Visibility.Visible;
             Pet[] petsToShow;
             if (showingOldPetsAgain)
             {
