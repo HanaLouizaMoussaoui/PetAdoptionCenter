@@ -9,11 +9,11 @@ namespace ProjectWPF.Repos
 {
     internal static class AdopterDatabase
     {
-        // This will be used to keep track of adoptees that already exist
+        // This will be used to keep track of adopters that already exist
         private static List<Adopter> adoptersInDatabase = new List<Adopter> { };
         public static List<Adopter> RetrieveAdopterDatabase()
         {
-            // List that will hold adoptee objects
+            // List that will hold adopter objects
             List<Adopter> adoptersInDB = new List<Adopter> { };
 
             // Path to our adoptee file
@@ -30,12 +30,12 @@ namespace ProjectWPF.Repos
                         line = sr.ReadLine();
                         newAdopter = GetAdopterFromTextLine(line);
                         Pet adoptedPet = GetPetFromTextLine(line);
-                        if (!CheckAdopterAlreadyExist(newAdopter, adoptedPet)) // Checking that the adoptee doesn't already exist in our list of adoptees
+                        if (!CheckAdopterAlreadyExist(newAdopter, adoptedPet)) // Checking that the adopter doesn't already exist in our list of adoptees
                         {
-                            newAdopter.AddPetToAdopter(adoptedPet); // Assigning the adopted pet to this new adoptee
-                            adoptersInDB.Add(newAdopter); // Adding the adoptee to the list
+                            newAdopter.AddPetToAdopter(adoptedPet); // Assigning the adopted pet to this new adopter
+                            adoptersInDB.Add(newAdopter); // Adding the adopter to the list
 
-                            // This copies the contents of adopteesInDb to adopteesInDatabase without them having the same pointer
+                            // This copies the contents of adoptersInDb to adoptersInDatabase without them having the same pointer
                             adoptersInDatabase = adoptersInDB.ToList();
                         }
                     }
@@ -43,15 +43,10 @@ namespace ProjectWPF.Repos
                     adoptersInDatabase.Clear();
                     return adoptersInDB;
                 }
-
             }
             else
-            {
                 throw new Exception("The adopter database file couldn't be found");
-            }
-            
         }
-
 
         private static Adopter GetAdopterFromTextLine(string line)
         {
@@ -60,8 +55,8 @@ namespace ProjectWPF.Repos
             string email = seperatedAdopterInfo[1];
             string address = seperatedAdopterInfo[2];
             long phoneNumber = long.Parse(seperatedAdopterInfo[3]);
-            int residents = int.Parse(seperatedAdopterInfo[4]);
-            int pets = int.Parse(seperatedAdopterInfo[5]); // TEMP 
+            string residents = seperatedAdopterInfo[4];
+            string pets = seperatedAdopterInfo[5]; // TEMP 
             Adopter newAdopter = new Adopter(name, email, address, phoneNumber, residents, pets);
             return newAdopter;
 

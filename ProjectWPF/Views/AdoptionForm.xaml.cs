@@ -79,6 +79,15 @@ namespace ProjectWPF.Views
 
         private string GetAdopterData()
         {
+            string home = "";
+            string residents = "";
+            string pets = "";
+            if (radioBtnHouse.IsChecked == true)
+                home = "House";
+            else
+                home = "Apartment";
+
+            Adopter adopter = new Adopter(txbName.Text, txbEmail.Text, txbAddress.Text, txbPhone.Text, home, residents, pets, selectedPetName.Text, selectedPetType);
             string adopterInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
             return adopterInfo;
         }
