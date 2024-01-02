@@ -58,19 +58,19 @@
             <StackPanel Margin="5" Orientation="Vertical" >
                 <Label Content="Home type"/>
                 <StackPanel>
-                    <RadioButton Content="House"></RadioButton>
-                    <RadioButton Content="Apartment"></RadioButton>                    
+                    <RadioButton x:Name="radioBtnHouse" Content="House"></RadioButton>
+                    <RadioButton x:Name="radioBtnApartment" Content="Apartment"></RadioButton>                    
                 </StackPanel>
 
                 <Label Content="Permanent residents in your home (including the adoptee)" Margin="0,10,0,0"/>
                 <StackPanel>
-                    <RadioButton Content="1-2"></RadioButton>
-                    <RadioButton Content="3+"></RadioButton>                    
+                    <RadioButton x:Name="radioBtnResidents1_2" Content="1-2"></RadioButton>
+                    <RadioButton x:Name="radioBtnResidents3_plus" Content="3+"></RadioButton>                    
                 </StackPanel>
                 <Label Content="Pets living in the home" Margin="0,10,0,0"/>
                 <StackPanel>
-                    <RadioButton Content="0-2"></RadioButton>
-                    <RadioButton Content="3+"></RadioButton>                    
+                    <RadioButton x:Name="radioBtnPets0_2" Content="0-2"></RadioButton>
+                    <RadioButton x:Name="radioBtnPets3_plus" Content="3+"></RadioButton>                    
                 </StackPanel>
             </StackPanel>
         </GroupBox>

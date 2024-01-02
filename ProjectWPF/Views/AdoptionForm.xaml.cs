@@ -19,7 +19,7 @@ using ProjectWPF.Pets;
 using ProjectWPF.Views;
 using System.IO;
 using System.Printing;
-using ProjectWPF.Adoptees;
+using ProjectWPF.Adopters;
 
 namespace ProjectWPF.Views
 {
@@ -48,9 +48,9 @@ namespace ProjectWPF.Views
             _selectedPet = PetDatabase.GetPetsInDatabase()[_petIndex];
 
             // Getting the adoptee data from the user info
-            string adopteeData = GetAdopteeData();
+            string adopterData = GetAdopterData();
             // Saving the adoptee data in the adoptee information file
-            SaveToFile(adopteeData);
+            SaveToFile(adopterData);
 
             // Getting the pet database
             string filePath = "..\\..\\..\\PetDatabaseInfo\\PetDatabaseTextFile.txt";
@@ -76,20 +76,20 @@ namespace ProjectWPF.Views
             Close();
         }
         //add validation here?
-        private string GetAdopteeData()
+
+        private string GetAdopterData()
         {
-            string adopteeInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
-            return adopteeInfo;
+            string adopterInfo= $"{txbName.Text},{txbEmail.Text},{txbAddress.Text},{txbPhone.Text},TODO,TODO,TODO,{selectedPetName.Text},{selectedPetType.Text} \n";
+            return adopterInfo;
         }
         private void SaveToFile(string content)
         {
-            string filePath = "..\\..\\..\\AdopterInfo\\adoptee_information.txt";
+            string filePath = "..\\..\\..\\AdopterInfo\\adopter_information.txt";
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
                     writer.Write(content);
-                    MessageBox.Show("Information saved properly", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)

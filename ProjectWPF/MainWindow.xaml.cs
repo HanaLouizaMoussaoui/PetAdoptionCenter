@@ -124,7 +124,7 @@ namespace ProjectWPF
         }
         private void ShowAdoptees()
         {
-            ShowAdoptees adoptees = new ShowAdoptees();
+            ShowAdopters adoptees = new ShowAdopters();
             adoptees.Show();
             this.Close();
         }

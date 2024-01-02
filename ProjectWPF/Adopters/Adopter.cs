@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using ProjectWPF.Pets;
 
-namespace ProjectWPF.Adoptees
+namespace ProjectWPF.Adopters
 {
-    internal class Adoptee
+    internal class Adopter
     {
         readonly private string _id;
         private string _name;
@@ -20,7 +20,7 @@ namespace ProjectWPF.Adoptees
         private int _residentsInHome;
         private int _petsInHome;
         readonly private List<Pet> _adoptedPets;
-        public Adoptee()
+        public Adopter()
         {
             _name = "N/A";
             _email = "N/A";
@@ -32,7 +32,7 @@ namespace ProjectWPF.Adoptees
         }
 
 
-        public Adoptee(string name, string email, string address, long phone, int residents, int pets)
+        public Adopter(string name, string email, string address, long phone, int residents, int pets)
         {
             _name = name;
             _email = email;
@@ -74,7 +74,7 @@ namespace ProjectWPF.Adoptees
         {
             get { return _residentsInHome; }
         }
-        public void AddPetToAdoptee(Pet petToAdd)
+        public void AddPetToAdopter(Pet petToAdd)
         {
             _adoptedPets.Add(petToAdd);
         }

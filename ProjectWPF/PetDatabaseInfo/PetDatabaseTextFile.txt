@@ -4,7 +4,7 @@ Chichi,1,true,Hamster,A speedy little hamster
 Slowy,15,true,Turtle,A majestic turtle
 Bueno,2,true,Hamster,A cute hamster that loves treats
 Kelp,10,true,Sea Turtle,An elegant sea turtle
-Charlotte,1,false,Dog,A playful puppy
+Charlotte,1,true,Dog,A playful puppy
 Carrot,7,true,Dog,A cute and endearing puppy
 Speedy,1,true,Hamster,A very fast and active hamster
 Keywe,2,true,Bird,A kiwi bird that is guaranteed to sweeten your day
