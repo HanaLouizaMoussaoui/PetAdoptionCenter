@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,14 +12,14 @@ namespace ProjectWPF.Adoptees
 {
     internal class Adoptee
     {
-        private string _id;
+        readonly private string _id;
         private string _name;
         private string _email;
         private string _address;
         private long _phoneNumber;
         private int _residentsInHome;
         private int _petsInHome;
-        private List<Pet> _adoptedPets;
+        readonly private List<Pet> _adoptedPets;
         public Adoptee()
         {
             _name = "N/A";
@@ -45,6 +46,9 @@ namespace ProjectWPF.Adoptees
         public string Name
         {
             get { return _name; }
+            set { if (value == "")
+                    throw new ArgumentException("Name cannot be null");
+                  _name = value; }
         }
         public List<Pet> AdoptedPets
         {
@@ -53,6 +57,22 @@ namespace ProjectWPF.Adoptees
         public string ID
         {
             get { return _id; }
+        }
+        public string Email
+        {
+            get { return _email; }
+        }
+        public string Address
+        {
+            get { return _address; }
+        }
+        public long PhoneNumber
+        {
+            get { return _phoneNumber; }
+        }
+        public int Residents
+        {
+            get { return _residentsInHome; }
         }
         public void AddPetToAdoptee(Pet petToAdd)
         {

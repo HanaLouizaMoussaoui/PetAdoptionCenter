@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectWPF.Views"
         mc:Ignorable="d"
-        Title="AdoptionForm" Height="650" Width="800"
+        Title="AdoptionForm" Height="700" Width="800"
         WindowStartupLocation="CenterScreen">
     <Window.FontFamily>
         <FontFamily>Bahnschrift</FontFamily>
     </Window.FontFamily>
     <StackPanel Margin="15">
-        <GroupBox Header="Pet Information" Margin="10">
+        <GroupBox Header="Pet Information" Foreground="#FFADE0BB" Margin="10">
             <StackPanel Margin="5" Orientation="Horizontal">
                 <Grid Width="200px" HorizontalAlignment="Left">
                     <Grid.ColumnDefinitions>
@@ -27,14 +27,13 @@
                     <Label Content="Type" Grid.Row="1" Grid.Column="0"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" x:Name="selectedPetType"/>
                 </Grid>
-                <Image></Image><!--Image of pet-->
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Adopter's Information" Margin="10">
+        <GroupBox Header="Adopter's Information" Foreground="#FFADE0BB" Margin="10">
             <StackPanel Margin="5" Orientation="Vertical">
                 <Grid Margin="0,0,30,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.3*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -44,7 +43,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
-                <TextBox Grid.Row="0" x:Name="txbName" Grid.Column="1" Margin="2"/>
+                <TextBox Grid.Row="0" x:Name="txbName" Grid.Column="1" Margin="2" />
                 <Label Content="Address" Grid.Row="1" Grid.Column="0"/>
                     <TextBox Grid.Row="1" x:Name="txbAddress" Grid.Column="1" Margin="2"/>
                 <Label Content="Email" Grid.Row="2" Grid.Column="0"/>
@@ -55,7 +54,7 @@
                 
             </StackPanel>
         </GroupBox>
-            <GroupBox Header="Environment Information" Margin="10">
+        <GroupBox Header="Environment Information" Foreground="#FFADE0BB" Margin="10">
             <StackPanel Margin="5" Orientation="Vertical" >
                 <Label Content="Home type"/>
                 <StackPanel>
@@ -77,8 +76,8 @@
         </GroupBox>
         
         <StackPanel Orientation="Horizontal" Margin="10">
-            <Button Content="Go Back" x:Name="goBack" Click="BtnClick_GoBackMain" Margin="0,0,15,0" HorizontalAlignment="Left"/>
-            <Button Content="Submit Application" Click="BtnClick_SubmittedAdoptionForm" Margin="15,0,0,0" HorizontalAlignment="Right"/>
+            <Button Content="Go Back" FontFamily="Bahnschrift" Foreground="Black" BorderBrush="White" x:Name="goBack" Click="BtnClick_GoBackMain" Margin="0,0,15,0" HorizontalAlignment="Left"/>
+            <Button FontFamily="Bahnschrift" Foreground="Black" BorderBrush="White" Background="#FFADE0BB" Content="Submit Application" Click="BtnClick_SubmittedAdoptionForm" Margin="15,0,0,0" HorizontalAlignment="Right"/>
         </StackPanel>
         
     </StackPanel>

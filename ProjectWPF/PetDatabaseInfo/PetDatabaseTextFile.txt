@@ -1,4 +1,4 @@
-Coco,4,false,Dog,A cute white and grey dog
+Coco,4,true,Dog,A cute white and grey dog
 Buddy,7,true,Dog,A friendly brown dog
 Chichi,1,true,Hamster,A speedy little hamster
 Slowy,15,true,Turtle,A majestic turtle
