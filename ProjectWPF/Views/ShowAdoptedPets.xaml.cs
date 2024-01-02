@@ -13,6 +13,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectWPF.Views;
+using ProjectWPF.Repos;
+using ProjectWPF.Adopters;
+using ProjectWPF.Pets;
 
 namespace ProjectWPF.Views
 {

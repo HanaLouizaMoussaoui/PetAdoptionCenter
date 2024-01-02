@@ -22,21 +22,18 @@
             <TextBlock Text="These pets have all been adopted! " TextAlignment="Center" FontSize="15" ></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="pet1Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="380px" Margin="0,80,0,0" FontSize="25"/>
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="adoptee2Name" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,80,0,0" Width="200px" FontSize="25"/>
-            <TextBlock x:Name="adoptee2Pets" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,5,0,0" Width="400px" FontSize="20"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="adoptee3Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="200px" FontSize="25"/>
-            <TextBlock x:Name="adoptee3Pets" HorizontalAlignment="Center" TextAlignment="Center"   Width="400px" FontSize="20"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="adoptee4Name" HorizontalAlignment="Center" TextAlignment="Center"  Width="200px" FontSize="25"/>
-            <TextBlock x:Name="adoptee4Pets" HorizontalAlignment="Center" TextAlignment="Center"  Width="400px"  FontSize="20"/>
-        </StackPanel>
+        <Grid>
+            <ItemsControl ItemsSource="{Binding AdoptedPets}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Image Source="{Binding ImageSrc}" Width="100" Height="100" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
         <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Go Back"  Width="90px" FontSize="20" Height="30" x:Name="goBack"  Click="BtnClick_GoBackMain"/>
     </Grid>
 </Window>
