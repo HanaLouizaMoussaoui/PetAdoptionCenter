@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,25 +137,27 @@ namespace ProjectWPF
             {
                 petsToShow = Random_Pets_Generator();
             }
+            Trace.WriteLine(petsToShow.Length);
+            Trace.WriteLine("name:" + petsToShow[0].Name);
+
             return petsToShow;
         }
 
         /// <summary>
         /// Shows the pets that are available for adoption from the 4 generated options.
         /// </summary>
-        private void Btn_Click_ShowAvailablePets(object sender, RoutedEventHandler e)
+        private void Btn_Click_ShowAvailablePets(object sender, RoutedEventArgs e)
         {
-            ShowAvailablePets();
-        }
-
-        private void ShowAvailablePets()
-        {
-Pet[] petsToShow = GetPetsToShow();
+            ClearDisplays();
+            showingOldPetsAgain = true;
+            Pet[] petsToShow = GetPetsToShow();
             int usedDisplayFrames = 0; //this variable will hold the number of used display frames for the pets (max 4) 
             for (int i = 0; i <  petsToShow.Length; i++)
             {
+                Trace.WriteLine(petsToShow[i].Name);
                 if (petsToShow[i].IsAdopted == false )
                 {
+                    Trace.WriteLine(petsToShow[i].Name);
                     switch (usedDisplayFrames)
                     {
                         case 1:
@@ -182,11 +185,23 @@ Pet[] petsToShow = GetPetsToShow();
                 pet1Name.Text = "None of these pets are available for adoption.";
             }
         }
+        private void ClearDisplays()
+        {
+            pet1Photo.Source = null;
+            pet1Name.Text = null;
+            pet2Photo.Source = null;
+            pet2Name.Text = null;
+            pet3Photo.Source = null;
+            pet3Name.Text = null;
+            pet4Photo.Source = null;
+            pet4Name.Text = null;
+        }
+
 
         /// <summary>
         /// Shows the pets that have been adopted from the 4 generated options
         /// </summary>
-        private void Btn_Click_ShowAdoptedPets(object sender, RoutedEventHandler e)
+        private void Btn_Click_ShowAdoptedPets(object sender, RoutedEventArgs e)
         {
             Pet[] petsToShow = GetPetsToShow();
         }
