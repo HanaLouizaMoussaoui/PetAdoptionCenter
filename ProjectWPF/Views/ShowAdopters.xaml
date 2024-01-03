@@ -9,10 +9,10 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White" Offset="0.166"/>
-                <GradientStop Color="#FFFFDBC8" Offset="1"/>
-            </LinearGradientBrush>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFFFC8E8" Offset="0"/>
+                <GradientStop Color="#FFFFFEFE" Offset="0.794"/>
+            </RadialGradientBrush>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>

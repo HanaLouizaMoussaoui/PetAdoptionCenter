@@ -18,9 +18,10 @@ namespace ProjectWPF
         private const int MAX_PETS = 12;
         private const int MAX_DISPLAYFRAMES = 4;
         //note the 50 here is a placeholder
-        private int[] generatedPetsIndex = new int[MAX_DISPLAYFRAMES] { 50, 50, 50, 50 };
-        private int[] previousGeneratedPets = new int[MAX_DISPLAYFRAMES];
+        private int[] allGeneratedPetsIndex = new int[MAX_DISPLAYFRAMES] { 50, 50, 50, 50 };
+        private int[] allOriginalGeneratedPets = new int[MAX_DISPLAYFRAMES];
         private bool showingOldPetsAgain = false;
+        private int petIndex;
 
         #region Constructor
         public MainWindow()
@@ -31,8 +32,8 @@ namespace ProjectWPF
         {
             //setting the pets generated and the previous pets generated to the current generated pets
             //previous generated pets only gets updated if we run the generate pets again
-            previousGeneratedPets = petsToGenerate;
-            generatedPetsIndex = petsToGenerate;
+            allOriginalGeneratedPets = petsToGenerate;
+            allGeneratedPetsIndex = petsToGenerate;
             showingOldPetsAgain = true;
             ShowPets();
         }
@@ -49,26 +50,25 @@ namespace ProjectWPF
         /// <param name="e"></param>
         private void Image_Click_PetSelected(object sender, RoutedEventArgs e)
         {
-            int petIndex;
             if (sender is Image clickedImage)
             {
                 switch (clickedImage.Name)
                 {
                     case "pet1Photo":
-                        petIndex = generatedPetsIndex[0];
+                        petIndex = allGeneratedPetsIndex[0];
                         break;
                     case "pet2Photo":
-                        petIndex = generatedPetsIndex[1];
+                        petIndex = allGeneratedPetsIndex[1];
                         break;
                     case "pet3Photo":
-                        petIndex = generatedPetsIndex[2];
+                        petIndex = allGeneratedPetsIndex[2];
                         break;
                     case "pet4Photo":
-                        petIndex = generatedPetsIndex[3];
+                        petIndex = allGeneratedPetsIndex[3];
                         break;
                     default: petIndex = 0; break;
                 }
-                PetDetails petDetails = new(petIndex, generatedPetsIndex);
+                PetDetails petDetails = new(petIndex, allGeneratedPetsIndex);
                 petDetails.Show();
                 this.Close();
             }
@@ -79,18 +79,18 @@ namespace ProjectWPF
         /// <returns>A pet array of the pets contained at each index.</returns>
         private Pet[] Random_Pets_Generator()
         {
-            generatedPetsIndex = new int[MAX_DISPLAYFRAMES] { 50, 50, 50, 50 };
+            allGeneratedPetsIndex = new int[MAX_DISPLAYFRAMES] { 50, 50, 50, 50 };
             Pet[] pets = new Pet[MAX_DISPLAYFRAMES];
             Random randomPetSelector = new Random();
             for (int i = 0; i < pets.Length; i++)
             {
                 int randomPetIndex = randomPetSelector.Next(0, MAX_PETS);
-                while (generatedPetsIndex.Contains(randomPetIndex))
+                while (allGeneratedPetsIndex.Contains(randomPetIndex))
                 {
                     randomPetIndex = randomPetSelector.Next(0, MAX_PETS);
                 }
                 pets[i] = PetDatabase.PetsInDatabase[randomPetIndex];
-                generatedPetsIndex[i] = randomPetIndex;
+                allGeneratedPetsIndex[i] = randomPetIndex;
             }
             return pets;
         }
@@ -119,6 +119,7 @@ namespace ProjectWPF
             seePetsButton.Content = "Refresh to see more pets!";
             seeAvailablePetsButton.Visibility = Visibility.Visible;
             seeAdoptedPetsButton.Visibility = Visibility.Visible;
+            seeAllPetsButton.Visibility = Visibility.Visible;
             Pet[] petsToShow = GetPetsToShow();
             pet1Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[0].Name}.png", UriKind.Relative));
             pet1Name.Text = petsToShow[0].Name;
@@ -135,8 +136,7 @@ namespace ProjectWPF
             Pet[] petsToShow;
             if (showingOldPetsAgain)
             {
-                Trace.WriteLine("ran previous");
-                petsToShow = PreviousPetsGenerator(previousGeneratedPets);
+                petsToShow = PreviousPetsGenerator(allOriginalGeneratedPets);
                 showingOldPetsAgain = false;
             }
             else
@@ -149,48 +149,7 @@ namespace ProjectWPF
         /// <summary>
         /// Shows the pets that are available for adoption from the 4 generated options.
         /// </summary>
-        private void Btn_Click_ShowAvailablePets(object sender, RoutedEventArgs e)
-        {
-            //showingOldPetsAgain = true;
-            ClearDisplays();
-            foreach (int i in generatedPetsIndex)
-            {
-
-            }
-            Pet[] petsToShow = PreviousPetsGenerator(previousGeneratedPets);
-            int usedDisplayFrames = 0; //this variable will hold the number of used display frames for the pets (max 4) 
-            for (int i = 0; i < petsToShow.Length; i++)
-            {
-                if (!petsToShow[i].IsAdopted)
-                {
-                    Trace.WriteLine(petsToShow[i].Name);
-                    switch (generatedPetsIndex[0])
-                    {
-                        case 1:
-                            pet1Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
-                            pet1Name.Text = petsToShow[i].Name;
-                            break;
-                        case 2:
-                            pet2Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
-                            pet2Name.Text = petsToShow[i].Name;
-                            break;
-                        case 3:
-                            pet3Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
-                            pet3Name.Text = petsToShow[i].Name;
-                            break;
-                        case 4:
-                            pet4Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
-                            pet4Name.Text = petsToShow[i].Name;
-                            break;
-                    }
-                    usedDisplayFrames++;
-                }
-            }
-            if (usedDisplayFrames == 0)
-            {
-                pet1Name.Text = "No pets are available for adoption.";
-            }
-        }
+        
         private void ClearDisplays()
         {
             pet1Photo.Source = null;
@@ -203,40 +162,41 @@ namespace ProjectWPF
             pet4Name.Text = null;
         }
 
-
-        /// <summary>
-        /// Shows the pets that have been adopted from the 4 generated options
-        /// </summary>
-        private void Btn_Click_ShowAdoptedPets(object sender, RoutedEventArgs e)
+        private void ShowPetsByFilter(bool isAdoptedFilter)
         {
-            //showingOldPetsAgain = true;
             ClearDisplays();
-            Trace.WriteLine(previousGeneratedPets[0]);
-            int usedDisplayFrames = 0; //this variable will hold the number of used display frames for the pets (max 4) 
-            foreach (int petIndex in generatedPetsIndex)
+            int usedDisplayFrames = 0;
+
+            for (int i = 0; i < allGeneratedPetsIndex.Length; i ++)
             {
-                Pet selectedPet = PetDatabase.PetsInDatabase[petIndex];
-                if (!selectedPet.IsAdopted)
+                Pet selectedPet = PetDatabase.PetsInDatabase[allGeneratedPetsIndex[i]];
+
+                if (selectedPet.IsAdopted == isAdoptedFilter)
                 {
                     switch (usedDisplayFrames)
                     {
-                        case 1:
+                        case 0:
                             pet1Photo.Source = new BitmapImage(selectedPet.PhotoSource);
                             pet1Name.Text = selectedPet.Name;
                             break;
-                        case 2:
+                        case 1:
                             pet2Photo.Source = new BitmapImage(selectedPet.PhotoSource);
                             pet2Name.Text = selectedPet.Name;
                             break;
-                        case 3:
+                        case 2:
                             pet3Photo.Source = new BitmapImage(selectedPet.PhotoSource);
                             pet3Name.Text = selectedPet.Name;
                             break;
-                        case 4:
+                        case 3:
                             pet4Photo.Source = new BitmapImage(selectedPet.PhotoSource);
                             pet4Name.Text = selectedPet.Name;
                             break;
                     }
+                    //swapping the indexes to keep the order of the pets in the generated array
+                    int temp = allGeneratedPetsIndex[usedDisplayFrames]; //original pet location stored in temp
+                    allGeneratedPetsIndex[usedDisplayFrames] = allGeneratedPetsIndex[i]; //overwrite first slot with new pet's location
+                    allGeneratedPetsIndex[i] = temp; //make the other pet's location equal to the original
+                    Trace.WriteLine("all gen pet index:" + allGeneratedPetsIndex[i]);
                     usedDisplayFrames++;
                 }
             }
@@ -244,6 +204,29 @@ namespace ProjectWPF
             {
                 pet1Name.Text = "No pets.";
             }
+        }
+
+        private void Btn_Click_ShowAvailablePets(object sender, RoutedEventArgs e)
+        {
+            ShowPetsByFilter(false);
+        }
+
+        private void Btn_Click_ShowAdoptedPets(object sender, RoutedEventArgs e)
+        {
+            ShowPetsByFilter(true);
+        }
+
+        private void Btn_Click_ShowAllPets(object sender, RoutedEventArgs e)
+        {
+            Pet[] petsToShow = PreviousPetsGenerator(allGeneratedPetsIndex);
+            pet1Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[0].Name}.png", UriKind.Relative));
+            pet1Name.Text = petsToShow[0].Name;
+            pet2Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[1].Name}.png", UriKind.Relative));
+            pet2Name.Text = petsToShow[1].Name;
+            pet3Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[2].Name}.png", UriKind.Relative));
+            pet3Name.Text = petsToShow[2].Name;
+            pet4Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[3].Name}.png", UriKind.Relative));
+            pet4Name.Text = petsToShow[3].Name;
         }
 
         /// <summary>
