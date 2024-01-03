@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectWPF.Pets;
+using System.Diagnostics;
 
 namespace ProjectWPF.Views
 {
@@ -31,7 +32,7 @@ namespace ProjectWPF.Views
             currentAlreadyGeneratedPets = alreadyGeneratedPets;
             currentPetIndex = petIndex; // Saving the pet index in a global variable so we can pass it later
             _selectedPet = PetDatabase.PetsInDatabase[petIndex];
-            selectedPetPhoto.Source = new BitmapImage(new Uri($"/Images/{_selectedPet.Name}.png", UriKind.Relative));
+            selectedPetPhoto.Source = new BitmapImage(_selectedPet.PhotoSource);
             selectedPetName.Text = _selectedPet.Name;
             selectedPetAge.Text = $"{_selectedPet.Age} years old";
             selectedPetType.Text = _selectedPet.Type;
@@ -50,7 +51,7 @@ namespace ProjectWPF.Views
             
         }
         
-        public void BtnClick__GoToAdoptPetPage(object sender, RoutedEventArgs e)
+        public void BtnClick_GoToAdoptPetPage(object sender, RoutedEventArgs e)
         {
             if (PetDatabase.PetsInDatabase[currentPetIndex].IsAdopted)
             {

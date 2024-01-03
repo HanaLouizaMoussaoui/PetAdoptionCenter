@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Xml.Linq;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ProjectWPF.Pets
 {
@@ -36,9 +32,9 @@ namespace ProjectWPF.Pets
             Description = DEFAULT_DESCRIPTION;
             Type = type;
         }
-        public Pet(string name, int age, bool isAdopted, string type, string description) : this (name,age,isAdopted,type)
+        public Pet(string name, int age, bool isAdopted, string type, string description) : this(name, age, isAdopted, type)
         {
-            Description= description;
+            Description = description;
         }
         #endregion
         #region Properties
@@ -57,16 +53,17 @@ namespace ProjectWPF.Pets
             get { return _age; }
             set
             {
+                if (value < 0)
+                {
+                    _age = 0;
+                }
                 _age = value;
             }
         }
         public bool IsAdopted
         {
             get { return _isAdopted; }
-            set
-            {
-                _isAdopted = value;
-            }
+            set { _isAdopted = value; }
         }
         public string Type
         {
@@ -76,6 +73,11 @@ namespace ProjectWPF.Pets
                 _type = value;
             }
         }
+
+        public Uri PhotoSource
+        {
+            get { return new Uri($"/Images/{Name}.png", UriKind.Relative); }
+        }
         #endregion
         #region Methods
         public void AdoptPet()
@@ -84,7 +86,7 @@ namespace ProjectWPF.Pets
             {
                 IsAdopted = true;
             }
-            
+
         }
         protected string RandomTraitPicker(string[] traits)
         {

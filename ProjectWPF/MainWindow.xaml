@@ -29,7 +29,7 @@
             </TextBlock.Background>
         </TextBlock>
 
-        <Button Content="Click to see our pets!" Margin="0,10,0,0" Click="Button_Click_Show_Pets" x:Name="seePetsButton"
+        <Button Content="Click to see our pets!" Margin="0,10,0,0" Click="Btn_Click_ShowPets" x:Name="seePetsButton"
             Width="200" FontSize="15" FontFamily="Bahnschrift" Foreground="Black" BorderBrush="White" Background="#FFADE0BB" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Available pets" Visibility="Collapsed" Margin="0,10,10,0" Click="Btn_Click_ShowAvailablePets" x:Name="seeAvailablePetsButton"
@@ -50,19 +50,19 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="10">
-                <Image x:Name="pet1Photo" MouseDown="Pet_Selected" Height="200px" Width="200px"/>
+                <Image x:Name="pet1Photo" MouseDown="Image_Click_PetSelected" Height="200px" Width="200px"/>
                 <TextBlock x:Name="pet1Name" HorizontalAlignment="Center" TextAlignment="Center" Height="20px" Width="200px"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10">
-                <Image x:Name="pet2Photo" MouseDown="Pet_Selected" Height="200px" Width="200px"/>
+                <Image x:Name="pet2Photo" MouseDown="Image_Click_PetSelected" Height="200px" Width="200px"/>
                 <TextBlock x:Name="pet2Name" HorizontalAlignment="Center" TextAlignment="Center" Height="20px" Width="200px"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
-                <Image x:Name="pet3Photo" MouseDown="Pet_Selected" Height="200px" Width="200px"/>
+                <Image x:Name="pet3Photo" MouseDown="Image_Click_PetSelected" Height="200px" Width="200px"/>
                 <TextBlock x:Name="pet3Name" HorizontalAlignment="Center" TextAlignment="Center" Height="20px" Width="200px"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
-                <Image x:Name="pet4Photo" MouseDown="Pet_Selected" Height="200px" Width="200px"/>
+                <Image x:Name="pet4Photo" MouseDown="Image_Click_PetSelected" Height="200px" Width="200px"/>
                 <TextBlock x:Name="pet4Name" HorizontalAlignment="Center" TextAlignment="Center" Height="20px" Width="200px"/>
             </StackPanel>
         </Grid>

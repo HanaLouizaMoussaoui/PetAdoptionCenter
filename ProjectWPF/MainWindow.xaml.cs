@@ -42,28 +42,28 @@ namespace ProjectWPF
             ShowPets();
         }
 
-        private void Button_Click_Show_Pets(object sender, RoutedEventArgs e)
+        private void Btn_Click_ShowPets(object sender, RoutedEventArgs e)
         {
             ShowPets();
         }
 
-        private void Pet_Selected(object sender, RoutedEventArgs e)
+        private void Image_Click_PetSelected(object sender, RoutedEventArgs e)
         {
             int petIndex = 0;
             if (sender is Image clickedImage)
             {
                 switch (clickedImage.Name)
                 {
-                    case "pet1photo":
+                    case "pet1Photo":
                         petIndex = alreadyGeneratedPets[0];
                         break;
-                    case "pet2photo":
+                    case "pet2Photo":
                         petIndex = alreadyGeneratedPets[1];
                         break;
-                    case "pet3photo":
+                    case "pet3Photo":
                         petIndex = alreadyGeneratedPets[2];
                         break;
-                    case "pet4photo":
+                    case "pet4Photo":
                         petIndex = alreadyGeneratedPets[3];
                         break;
                 }
@@ -130,6 +130,7 @@ namespace ProjectWPF
             Pet[] petsToShow;
             if (showingOldPetsAgain)
             {
+                Trace.WriteLine("ran previous");
                 petsToShow = PreviousPetsGenerator(previousGeneratedPets);
                 showingOldPetsAgain = false;
             }
@@ -137,9 +138,6 @@ namespace ProjectWPF
             {
                 petsToShow = Random_Pets_Generator();
             }
-            Trace.WriteLine(petsToShow.Length);
-            Trace.WriteLine("name:" + petsToShow[0].Name);
-
             return petsToShow;
         }
 
@@ -148,32 +146,31 @@ namespace ProjectWPF
         /// </summary>
         private void Btn_Click_ShowAvailablePets(object sender, RoutedEventArgs e)
         {
+            //showingOldPetsAgain = true;
             ClearDisplays();
-            showingOldPetsAgain = true;
-            Pet[] petsToShow = GetPetsToShow();
+            Pet[] petsToShow = PreviousPetsGenerator(previousGeneratedPets);
             int usedDisplayFrames = 0; //this variable will hold the number of used display frames for the pets (max 4) 
             for (int i = 0; i <  petsToShow.Length; i++)
             {
-                Trace.WriteLine(petsToShow[i].Name);
                 if (petsToShow[i].IsAdopted == false )
                 {
                     Trace.WriteLine(petsToShow[i].Name);
                     switch (usedDisplayFrames)
                     {
                         case 1:
-                            pet1Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[i].Name}.png", UriKind.Relative));
+                            pet1Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
                             pet1Name.Text = petsToShow[i].Name;
                             break;
                         case 2:
-                            pet2Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[i].Name}.png", UriKind.Relative));
+                            pet2Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
                             pet2Name.Text = petsToShow[i].Name;
                             break;
                         case 3:
-                            pet3Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[i].Name}.png", UriKind.Relative));
+                            pet3Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
                             pet3Name.Text = petsToShow[i].Name;
                             break;
                         case 4:
-                            pet4Photo.Source = new BitmapImage(new Uri($"/Images/{petsToShow[i].Name}.png", UriKind.Relative));
+                            pet4Photo.Source = new BitmapImage(petsToShow[i].PhotoSource);
                             pet4Name.Text = petsToShow[i].Name;
                             break;
                     }
