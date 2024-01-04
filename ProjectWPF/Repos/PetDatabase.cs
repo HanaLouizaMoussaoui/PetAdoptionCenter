@@ -16,7 +16,7 @@ namespace ProjectWPF.Repos
             {
                 Pet[] petsInDB = new Pet[NUMBER_OF_PETS_IN_DB];
                 int arrayCounter = 0;
-                string filePath = ".\\PetDatabaseTextFile.txt";
+                string filePath = ".\\pet_information.txt";
 
                 if (File.Exists(filePath))
                 {

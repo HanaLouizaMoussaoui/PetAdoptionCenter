@@ -3,11 +3,11 @@ using ProjectWPF.Repos;
 using ProjectWPF.Views;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using System.IO;
 
 namespace ProjectWPF
 {
@@ -18,7 +18,7 @@ namespace ProjectWPF
     {
         private const int MAX_PETS = 12;
         private const int MAX_DISPLAYFRAMES = 4;
-        //note the 50 here is a placeholder
+        //note the 50 here is a placeholder. They get overwritten with the indexes of the pets generated. -hana
         private int[] allGeneratedPetsIndex = new int[MAX_DISPLAYFRAMES] { 50, 50, 50, 50 };
         private int[] allOriginalGeneratedPets = new int[MAX_DISPLAYFRAMES];
         private bool showingOldPetsAgain = false;
@@ -30,44 +30,54 @@ namespace ProjectWPF
             InitializeComponent();
             InitializeFiles();
         }
-        
+
         public MainWindow(int[] petsToGenerate) : this()
         {
+            InitializeFiles();
             //setting the pets generated and the previous pets generated to the current generated pets
             //previous generated pets only gets updated if we run the generate pets again
             allOriginalGeneratedPets = petsToGenerate;
             allGeneratedPetsIndex = petsToGenerate;
             showingOldPetsAgain = true;
             ShowPets();
+
         }
         #endregion
+
+        /// <summary>
+        /// Creates the 2 starting files and gives them starting data
+        /// </summary>
         private static void InitializeFiles()
         {
-            //Creating the startup pet file in the bin
-            string filePathPets = ".\\pet_information.txt";
-
-            if (!File.Exists(filePathPets))
+            try
             {
-                // Create the file if it doesn't exist
-                using (File.Create(filePathPets)) 
+                //Creating the startup pet file in the bin
+                string filePathPets = ".\\pet_information.txt";
+
+                if (!File.Exists(filePathPets))
                 {
+                    // File.Create(filePathPets);
+
+                    // Create the file if it doesn't exist
                     string startingContentPets = "Coco,4,true,Dog,A cute white and grey dog\r\nBuddy,7,false,Dog,A friendly brown dog\r\nChichi,1,true,Hamster,A speedy little hamster\r\nSlowy,15,false,Turtle,A majestic turtle\r\nBueno,2,true,Hamster,A cute hamster that loves treats\r\nKelp,10,false,Sea Turtle,An elegant sea turtle\r\nCharlotte,1,false,Dog,A playful puppy\r\nCarrot,7,false,Dog,A cute and endearing puppy\r\nSpeedy,1,false,Hamster,A very fast and active hamster\r\nKeywe,2,false,Bird,A kiwi bird that is guaranteed to sweeten your day\r\nPlumpo,4,true,Bird,A cockatiel with minimal thoughts\r\nSmokey,289,true,Dragon,A fiery friend who will protect you for life";
                     // Write starting content to the file
                     File.WriteAllText(filePathPets, startingContentPets);
                 }
-            }
 
-            string filePathAdopters = ".\\adopter_information.txt";
-            if (!File.Exists(filePathAdopters))
-            {
-                // Create the file if it doesn't exist
-                using (File.Create(filePathAdopters)) 
+                string filePathAdopters = ".\\adopter_information.txt";
+                if (!File.Exists(filePathAdopters))
                 {
+                    // Create the file if it doesn't exist
                     string startingContent = "hana,hana@email.com,99 street,5141234567,House,1-2,0-2,Coco,Dog\r\nhana,hana@email.com,99 street,5141234567,House,1-2,0-2,Chichi,Hamster \r\ntaryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Plumpo,Bird\r\ntaryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Smokey,Dragon\r\nbob,bob@email.com,67 street,5144445555,Apartment,1-2,0-2,Bueno,Hamster";
                     // Write default content to the file
                     File.WriteAllText(filePathAdopters, startingContent);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
         private void Btn_Click_ShowPets(object sender, RoutedEventArgs e)
         {
@@ -180,7 +190,7 @@ namespace ProjectWPF
         /// <summary>
         /// Shows the pets that are available for adoption from the 4 generated options.
         /// </summary>
-        
+
         private void ClearDisplays()
         {
             pet1Photo.Source = null;
@@ -198,7 +208,7 @@ namespace ProjectWPF
             ClearDisplays();
             int usedDisplayFrames = 0;
 
-            for (int i = 0; i < allGeneratedPetsIndex.Length; i ++)
+            for (int i = 0; i < allGeneratedPetsIndex.Length; i++)
             {
                 Pet selectedPet = PetDatabase.PetsInDatabase[allGeneratedPetsIndex[i]];
 
