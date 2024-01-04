@@ -23,6 +23,7 @@ namespace ProjectWPF.Views
         private Pet _selectedPet;
         private int currentPetIndex;
         private int[] currentlyGeneratedPets;
+        #region Constructor
         public PetDetails()
         {
             InitializeComponent();
@@ -43,14 +44,23 @@ namespace ProjectWPF.Views
             }
             else selectedPetIsAdopted.Text = "Available - Up for Adoption";
         }
+        #endregion
+        /// <summary>
+        /// Returns to main window, closes currently open window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
         {
             MainWindow newMain = new MainWindow(currentlyGeneratedPets);
             newMain.Show();
             this.Close();
-            
         }
-        
+        /// <summary>
+        /// Opens the corresponding adoption popup and closes the adoption form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void BtnClick_GoToAdoptPetPage(object sender, RoutedEventArgs e)
         {
             if (PetDatabase.PetsInDatabase[currentPetIndex].IsAdopted)

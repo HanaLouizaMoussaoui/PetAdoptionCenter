@@ -10,6 +10,9 @@ namespace ProjectWPF.Repos
     {
         //private static Pet[] petsInDatabase;
         private const int NUMBER_OF_PETS_IN_DB = 12;
+        /// <summary>
+        /// Calculated property that returns the array of pets contained in the database from the file
+        /// </summary>
         public static Pet[] PetsInDatabase
         {
             get
@@ -33,9 +36,14 @@ namespace ProjectWPF.Repos
                 }
                 return petsInDB;
             }
-
         }
 
+        /// <summary>
+        /// Retrieves the pet information from a string split on the current line of data from the file.
+        /// </summary>
+        /// <param name="line">the current line of data being read from the file.</param>
+        /// <returns>A new pet object</returns>
+        /// <exception cref="Exception">Exception thrown if the information on the line was not split correctly.</exception>
         private static Pet GetPetFromTextLine(string line)
         {
             string[] seperatedPetInfo = line.Split(',');

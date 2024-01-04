@@ -24,20 +24,13 @@ using ProjectWPF.Views;
 namespace ProjectWPF.Views
 {
     /// <summary>
-    /// Interaction logic for SuccessfulAdoptionPopup.xaml
+    /// Interaction logic for SuccessfulAdoptionPopup.xaml. Appear when user can successfully adopt the selected pet.
     /// </summary>
     public partial class SuccessfulAdoptionPopup : Window
     {
-        readonly Pet _selectedPet;
         public SuccessfulAdoptionPopup()
         {
             InitializeComponent();
-        }
-
-        public SuccessfulAdoptionPopup(int petIndex) : this()
-        {
-            _selectedPet = PetDatabase.PetsInDatabase[petIndex];
-            selectedPetName.Text = _selectedPet.Name;
         }
         public void BtnClick_ClosePopup(object sender, RoutedEventArgs e)
         {

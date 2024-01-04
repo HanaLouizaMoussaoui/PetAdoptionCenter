@@ -16,9 +16,12 @@ namespace ProjectWPF.Views
         public ShowAdopters()
         {
             InitializeComponent();
-            DisplayAdoptees();
+            DisplayAdopters();
         }
-        private void DisplayAdoptees()
+        /// <summary>
+        /// Displays the adopters retrieved from the AdopterDatabase
+        /// </summary>
+        private void DisplayAdopters()
         {
             // Fetching the adoptees we have on file
             List<Adopter> adopters = AdopterDatabase.RetrieveAdopterDatabase();
@@ -56,9 +59,6 @@ namespace ProjectWPF.Views
                     adopterPetTextBlocks[i].Text = sb.ToString();
                 }
             }
-            // Going through each adopter
-
-
         }
         // Allows the user to return to the main window
         public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
@@ -66,7 +66,6 @@ namespace ProjectWPF.Views
             MainWindow newMain = new MainWindow();
             newMain.Show();
             this.Close();
-
         }
     }
 

@@ -1,7 +1,6 @@
 ﻿using ProjectWPF.Pets;
 using System;
 using System.Collections.Generic;
-using System.Windows.Documents;
 
 namespace ProjectWPF.Adopters
 {
@@ -22,7 +21,7 @@ namespace ProjectWPF.Adopters
         #endregion
 
         #region Constructors
-        public Adopter() //TODO: remove the default constructor, we do not want empty adopter as a valid state
+        public Adopter()
         {
             _name = "N/A";
             _email = "N/A";
@@ -58,6 +57,8 @@ namespace ProjectWPF.Adopters
         #endregion
 
         #region Properties
+        // The validation here is a bit redundant since it checks already on file submit, but it doesn't do much harm to leave it in in case of adopters
+        // being made not on submission.
         public string Name
         {
             get { return _name; }
@@ -78,7 +79,7 @@ namespace ProjectWPF.Adopters
             set
             {
                 if (value == "")
-                    throw new ArgumentException("Email cannot be null"); 
+                    throw new ArgumentException("Email cannot be null");
                 _email = value;
             }
         }
@@ -114,20 +115,26 @@ namespace ProjectWPF.Adopters
         {
             get { return _homeType; }
         }
-        #endregion
-
-        #region Methods
-        public void AddPetToAdopter(Pet petToAdd)
-        {
-            _adoptedPets.Add(petToAdd);
-        }
         public string ID
         {
-            get {
+            get
+            {
                 string id = $"{Name}{PhoneNumber.Substring(0, 3)}";
                 return id;
             }
         }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Adds an adopted pet to the property _adoptedPets of the Adopter object
+        /// </summary>
+        /// <param name="petToAdd">The pet to add to the Adopter</param>
+        public void AddPetToAdopter(Pet petToAdd)
+        {
+            _adoptedPets.Add(petToAdd);
+        }
+
         public override string ToString()
         {
             return $"{Name},{Address},{Email},{PhoneNumber},{HomeType},{Residents},{PetsInHome}";

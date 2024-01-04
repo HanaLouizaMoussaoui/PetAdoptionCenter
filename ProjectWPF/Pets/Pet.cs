@@ -74,6 +74,9 @@ namespace ProjectWPF.Pets
             }
         }
 
+        /// <summary>
+        /// Calculated property for the photo source
+        /// </summary>
         public Uri PhotoSource
         {
             get { return new Uri($"/Images/{Name}.png", UriKind.Relative); }

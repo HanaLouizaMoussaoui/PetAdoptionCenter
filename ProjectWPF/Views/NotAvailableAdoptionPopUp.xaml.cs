@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace ProjectWPF.Views
 {
     /// <summary>
-    /// Interaction logic for NotAvailableAdoptionPopUp.xaml
+    /// Interaction logic for NotAvailableAdoptionPopUp.xaml. Appears when a user was unable to adopt the pet they selected.
     /// </summary>
     public partial class NotAvailableAdoptionPopUp : Window
     {
