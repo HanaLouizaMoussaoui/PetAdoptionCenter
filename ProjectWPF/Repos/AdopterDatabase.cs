@@ -19,11 +19,6 @@ namespace ProjectWPF.Repos
 
             // Path to our adoptee file
             string filePath = ".\\adopter_information.txt";
-            if (!File.Exists(filePath))
-            {
-                // Create the file if it doesn't exist
-                using (File.Create(filePath)) { AddStartingContent(filePath); }
-            }
             if (File.Exists(filePath))
             {
                 using (StreamReader sr = new StreamReader(filePath))
@@ -51,14 +46,6 @@ namespace ProjectWPF.Repos
             }
             else
                 throw new Exception("The adopter database file couldn't be found");
-        }
-
-        private static void AddStartingContent(string filePath)
-        {
-            string startingContent = "hana,hana@email.com,99 street,5141234567,House,1-2,0-2,Coco,Dog\r\nhana,hana@email.com,99 street,5141234567,House,1-2,0-2,Chichi,Hamster \r\ntaryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Plumpo,Bird\r\ntaryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Smokey,Dragon\r\nbob,bob@email.com,67 street,5144445555,Apartment,1-2,0-2,Bueno,Hamster";
-
-            // Write default content to the file
-            File.WriteAllText(filePath, startingContent);
         }
 
         private static Adopter GetAdopterFromTextLine(string line)

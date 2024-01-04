@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace ProjectWPF
 {
@@ -27,7 +28,9 @@ namespace ProjectWPF
         public MainWindow()
         {
             InitializeComponent();
+            InitializeFiles();
         }
+        
         public MainWindow(int[] petsToGenerate) : this()
         {
             //setting the pets generated and the previous pets generated to the current generated pets
@@ -38,6 +41,34 @@ namespace ProjectWPF
             ShowPets();
         }
         #endregion
+        private static void InitializeFiles()
+        {
+            //Creating the startup pet file in the bin
+            string filePathPets = ".\\pet_information.txt";
+
+            if (!File.Exists(filePathPets))
+            {
+                // Create the file if it doesn't exist
+                using (File.Create(filePathPets)) 
+                {
+                    string startingContentPets = "Coco,4,true,Dog,A cute white and grey dog\r\nBuddy,7,false,Dog,A friendly brown dog\r\nChichi,1,true,Hamster,A speedy little hamster\r\nSlowy,15,false,Turtle,A majestic turtle\r\nBueno,2,true,Hamster,A cute hamster that loves treats\r\nKelp,10,false,Sea Turtle,An elegant sea turtle\r\nCharlotte,1,false,Dog,A playful puppy\r\nCarrot,7,false,Dog,A cute and endearing puppy\r\nSpeedy,1,false,Hamster,A very fast and active hamster\r\nKeywe,2,false,Bird,A kiwi bird that is guaranteed to sweeten your day\r\nPlumpo,4,true,Bird,A cockatiel with minimal thoughts\r\nSmokey,289,true,Dragon,A fiery friend who will protect you for life";
+                    // Write starting content to the file
+                    File.WriteAllText(filePathPets, startingContentPets);
+                }
+            }
+
+            string filePathAdopters = ".\\adopter_information.txt";
+            if (!File.Exists(filePathAdopters))
+            {
+                // Create the file if it doesn't exist
+                using (File.Create(filePathAdopters)) 
+                {
+                    string startingContent = "hana,hana@email.com,99 street,5141234567,House,1-2,0-2,Coco,Dog\r\nhana,hana@email.com,99 street,5141234567,House,1-2,0-2,Chichi,Hamster \r\ntaryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Plumpo,Bird\r\ntaryn,taryn@email.com,78 street,5142223333,Apartment,3+,0-2,Smokey,Dragon\r\nbob,bob@email.com,67 street,5144445555,Apartment,1-2,0-2,Bueno,Hamster";
+                    // Write default content to the file
+                    File.WriteAllText(filePathAdopters, startingContent);
+                }
+            }
+        }
         private void Btn_Click_ShowPets(object sender, RoutedEventArgs e)
         {
             ShowPets();
