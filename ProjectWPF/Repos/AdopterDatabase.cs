@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace ProjectWPF.Repos
 {
+    /// <summary>
+    /// This class manages the file saving/retrieving of the adopters and links them with their pets
+    /// </summary>
     internal static class AdopterDatabase
     {
         // This will be used to keep track of adopters that already exist
@@ -48,6 +51,11 @@ namespace ProjectWPF.Repos
                 throw new Exception("The adopter database file couldn't be found");
         }
 
+        /// <summary>
+        /// Splits the line by the commas and creates adopter objects with the information.
+        /// </summary>
+        /// <param name="line">the string of data from the file</param>
+        /// <returns>a new Adopter object</returns>
         private static Adopter GetAdopterFromTextLine(string line)
         {
             string[] seperatedAdopterInfo = line.Split(',');
@@ -61,6 +69,12 @@ namespace ProjectWPF.Repos
             Adopter newAdopter = new Adopter(name, address, email, phoneNumber, home, residents, pets);
             return newAdopter;
         }
+
+        /// <summary>
+        /// Splits the line by the comma and retrieves the pet object based on the pet's name in the file.
+        /// </summary>
+        /// <param name="line">string of data from the file</param>
+        /// <returns>a Pet object</returns>
         private static Pet GetPetFromTextLine(string line)
         {
             string[] seperatedAdopterInfo = line.Split(',');
@@ -73,6 +87,13 @@ namespace ProjectWPF.Repos
             return null;
 
         }
+
+        /// <summary>
+        /// Checks if an adopter already exists, and if so it will not create a new adopter object.
+        /// </summary>
+        /// <param name="newAdopter">A new adopter that might exist</param>
+        /// <param name="adoptedPet">The adopted pet to be linked to the adopter</param>
+        /// <returns></returns>
         private static bool CheckAdopterAlreadyExist(Adopter newAdopter, Pet adoptedPet)
         {
             bool alreadyExists = false;

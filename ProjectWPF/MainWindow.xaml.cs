@@ -172,6 +172,10 @@ namespace ProjectWPF
             pet4Name.Text = petsToShow[3].Name;
         }
 
+        /// <summary>
+        /// Retrieves the pet array of pets to show, either by generating a new set or by reloading a previous set
+        /// </summary>
+        /// <returns>An array of pets to display.</returns>
         private Pet[] GetPetsToShow()
         {
             Pet[] petsToShow;
@@ -203,10 +207,14 @@ namespace ProjectWPF
             pet4Name.Text = null;
         }
 
+        /// <summary>
+        /// Displays the pets based on the given filter (adopted/not adopted)
+        /// </summary>
+        /// <param name="isAdoptedFilter">The bool that determines if we want adopted or non-adopted.</param>
         private void ShowPetsByFilter(bool isAdoptedFilter)
         {
             ClearDisplays();
-            int usedDisplayFrames = 0;
+            int usedDisplayFrames = 0; //the number of currently used display frames
 
             for (int i = 0; i < allGeneratedPetsIndex.Length; i++)
             {
@@ -237,7 +245,6 @@ namespace ProjectWPF
                     int temp = allGeneratedPetsIndex[usedDisplayFrames]; //original pet location stored in temp
                     allGeneratedPetsIndex[usedDisplayFrames] = allGeneratedPetsIndex[i]; //overwrite first slot with new pet's location
                     allGeneratedPetsIndex[i] = temp; //make the other pet's location equal to the original
-                    Trace.WriteLine("all gen pet index:" + allGeneratedPetsIndex[i]);
                     usedDisplayFrames++;
                 }
             }
@@ -257,6 +264,11 @@ namespace ProjectWPF
             ShowPetsByFilter(true);
         }
 
+        /// <summary>
+        /// Displays all pets images and names.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Click_ShowAllPets(object sender, RoutedEventArgs e)
         {
             Pet[] petsToShow = PreviousPetsGenerator(allGeneratedPetsIndex);
