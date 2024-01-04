@@ -1,37 +1,21 @@
-﻿using ProjectWPF.Pets;
-using ProjectWPF.Repos;
-using System;
-using ProjectWPF.Repos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using ProjectWPF.Adopters;
 using ProjectWPF.Pets;
-using ProjectWPF.Views;
+using ProjectWPF.Repos;
+using System;
 using System.IO;
-using System.Printing;
-using ProjectWPF.Adopters;
-using static System.Net.Mime.MediaTypeNames;
+using System.Windows;
 
 namespace ProjectWPF.Views
 {
     /// <summary>
     /// Interaction logic for AdoptionForm.xaml
     /// </summary>
-    /// 
     public partial class AdoptionForm : Window
     {
         static Pet _selectedPet;
         private int _petIndex;
+
+        #region Constructors
         public AdoptionForm()
         {
             InitializeComponent();
@@ -43,19 +27,40 @@ namespace ProjectWPF.Views
             selectedPetName.Text = _selectedPet.Name;
             selectedPetType.Text = _selectedPet.Type;
         }
+        #endregion
+
+        /// <summary>
+        /// Checks that the form has valid information. If so, saves the information to the adopter file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void BtnClick_SubmittedAdoptionForm(object sender, RoutedEventArgs e)
         {
+            //Checking that each form item has a value that is not null or empty
+            if (string.IsNullOrWhiteSpace(txbName.Text) ||
+                string.IsNullOrWhiteSpace(txbAddress.Text) ||
+                string.IsNullOrWhiteSpace(txbEmail.Text) ||
+                string.IsNullOrWhiteSpace(txbPhone.Text) ||
+                (!radioBtnHouse.IsChecked.HasValue || !radioBtnApartment.IsChecked.HasValue) ||
+                (!radioBtnResidents1_2.IsChecked.HasValue || !radioBtnResidents3_plus.IsChecked.HasValue) ||
+                (!radioBtnPets0_2.IsChecked.HasValue || !radioBtnPets3_plus.IsChecked.HasValue))
+            {
+                MessageBox.Show("Please fill in all the required fields.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Does not proceed with submission if the validation fails
+            }
+
             // Fetching the pet that's being adopted
             _selectedPet = PetDatabase.PetsInDatabase[_petIndex];
 
             // Getting the adoptee data from the user info
             string adopterData = GetAdopterData();
+
             // Saving the adoptee data in the adoptee information file
             SaveToFile(adopterData);
 
             // Getting the pet database
             string filePath = ".\\PetDatabaseTextFile.txt";
-          
+
             // Updating the pet adopted status from false to true in the file database
             int lineIndexToChange = _petIndex;
             string newTextForLine = $"{_selectedPet.Name},{_selectedPet.Age},true,{_selectedPet.Type},{_selectedPet.Description}";
@@ -63,21 +68,28 @@ namespace ProjectWPF.Views
             lines[lineIndexToChange] = newTextForLine;
             File.WriteAllLines(filePath, lines);
 
-            // Updating the pet database
-            //PetDatabase.PetsInDatabase;
-
+            // Display successful adoption
             SuccessfulAdoptionPopup popup = new SuccessfulAdoptionPopup();
             popup.Show();
             Close();
         }
+
+        /// <summary>
+        /// Returns to the main window. Closes currently open/object sender window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void BtnClick_GoBackMain(object sender, RoutedEventArgs e)
         {
             MainWindow newMain = new MainWindow();
             newMain.Show();
             Close();
         }
-        //add validation here?
 
+        /// <summary>
+        /// Retrieves the data from the adoption form and turns it into a string.
+        /// </summary>
+        /// <returns>A string containing the formatted adopter data.</returns>
         private string GetAdopterData()
         {
             string home;
@@ -100,6 +112,11 @@ namespace ProjectWPF.Views
             string adopterInfo = $"\n{adopter.ToString()},{selectedPetName.Text},{selectedPetType.Text}";
             return adopterInfo;
         }
+
+        /// <summary>
+        /// Saving the new adopter to the file
+        /// </summary>
+        /// <param name="content">the content to be saved to the file</param>
         private void SaveToFile(string content)
         {
             string filePath = ".\\adopter_information.txt";

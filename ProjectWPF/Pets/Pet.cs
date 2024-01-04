@@ -79,21 +79,5 @@ namespace ProjectWPF.Pets
             get { return new Uri($"/Images/{Name}.png", UriKind.Relative); }
         }
         #endregion
-        #region Methods
-        public void AdoptPet()
-        {
-            if (!IsAdopted)
-            {
-                IsAdopted = true;
-            }
-
-        }
-        protected string RandomTraitPicker(string[] traits)
-        {
-            Random randomizer = new Random();
-            int randomIndex = randomizer.Next(0, traits.Length - 1);
-            return traits[randomIndex];
-        }
-        #endregion
     }
 }

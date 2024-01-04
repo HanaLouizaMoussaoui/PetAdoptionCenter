@@ -1,6 +1,7 @@
 ﻿using ProjectWPF.Pets;
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 
 namespace ProjectWPF.Repos
@@ -15,8 +16,14 @@ namespace ProjectWPF.Repos
             {
                 Pet[] petsInDB = new Pet[NUMBER_OF_PETS_IN_DB];
                 int arrayCounter = 0;
-                StringBuilder sb = new StringBuilder();
                 string filePath = ".\\PetDatabaseTextFile.txt";
+
+                if (!File.Exists(filePath))
+                {
+                    // Create the file if it doesn't exist
+                    using (File.Create(filePath)) { AddStartingContent(filePath); }
+                }
+
                 if (File.Exists(filePath))
                 {
                     using (StreamReader sr = new StreamReader(filePath))
@@ -33,6 +40,12 @@ namespace ProjectWPF.Repos
                 return petsInDB;
             }
 
+        }
+        private static void AddStartingContent(string filePath)
+        {
+            string startingContent = "Coco,4,true,Dog,A cute white and grey dog\r\nBuddy,7,false,Dog,A friendly brown dog\r\nChichi,1,true,Hamster,A speedy little hamster\r\nSlowy,15,false,Turtle,A majestic turtle\r\nBueno,2,true,Hamster,A cute hamster that loves treats\r\nKelp,10,false,Sea Turtle,An elegant sea turtle\r\nCharlotte,1,false,Dog,A playful puppy\r\nCarrot,7,false,Dog,A cute and endearing puppy\r\nSpeedy,1,false,Hamster,A very fast and active hamster\r\nKeywe,2,false,Bird,A kiwi bird that is guaranteed to sweeten your day\r\nPlumpo,4,true,Bird,A cockatiel with minimal thoughts\r\nSmokey,289,true,Dragon,A fiery friend who will protect you for life";
+            // Write starting content to the file
+            File.WriteAllText(filePath, startingContent);
         }
         private static Pet GetPetFromTextLine(string line)
         {

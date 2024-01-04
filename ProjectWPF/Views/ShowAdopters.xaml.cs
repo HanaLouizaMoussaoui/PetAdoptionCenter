@@ -52,10 +52,8 @@ namespace ProjectWPF.Views
                         string petName = adopters[i].AdoptedPets[j].Name;
                         sb.Append($"{petName} ");
                     }
-                    Trace.WriteLine("name 3:" + adopterNameTextBlocks[i].Text);
                     // Displaying the adopter's pet(s)
                     adopterPetTextBlocks[i].Text = sb.ToString();
-                    Trace.WriteLine("name 4:" + adopterNameTextBlocks[i].Text);
                 }
             }
             // Going through each adopter
