@@ -40,13 +40,18 @@ namespace ProjectWPF.Views
             if (string.IsNullOrWhiteSpace(txbName.Text) ||
                 string.IsNullOrWhiteSpace(txbAddress.Text) ||
                 string.IsNullOrWhiteSpace(txbEmail.Text) ||
-                string.IsNullOrWhiteSpace(txbPhone.Text) ||
+                string.IsNullOrWhiteSpace(txbPhone.Text) || txbPhone.Text.Length < 3 ||
                 (!radioBtnHouse.IsChecked.HasValue || !radioBtnApartment.IsChecked.HasValue) ||
                 (!radioBtnResidents1_2.IsChecked.HasValue || !radioBtnResidents3_plus.IsChecked.HasValue) ||
                 (!radioBtnPets0_2.IsChecked.HasValue || !radioBtnPets3_plus.IsChecked.HasValue))
             {
                 MessageBox.Show("Please fill in all the required fields.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return; // Does not proceed with submission if the validation fails
+            }
+            if (txbPhone.Text.Length < 3)
+            {
+                MessageBox.Show("Please enter at least the first 3 digits of your phone number.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Does not proceed with submission if the phone number is less than 3 digits long
             }
 
             // Fetching the pet that's being adopted
@@ -59,7 +64,7 @@ namespace ProjectWPF.Views
             SaveToFile(adopterData);
 
             // Getting the pet database
-            string filePath = ".\\PetDatabaseTextFile.txt";
+            string filePath = ".\\pet_information.txt";
 
             // Updating the pet adopted status from false to true in the file database
             int lineIndexToChange = _petIndex;
